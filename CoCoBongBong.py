@@ -7,9 +7,9 @@ from discord.utils import get
 
 from config import *
 
-# 교수님 소개
-# 수강 인원 확인
-# 출석체크
+from datetime import datetime
+
+import os
 
 intents = discord.Intents.default()
 intents.members = True
@@ -31,4 +31,5 @@ async def on_ready():
     
     await bot.change_presence(status=discord.Status.online, activity=discord.Game(f'/help 치면 사용법 설명'))
 
-bot.run('MTAxMzEzMjIwNTcwNDM0NzcwOA.GfYUsW.MLrE70dkxZBBeMUwn4cO0BkM1zEKrtPqfvYovc')
+access_token = os.environ['BOT_TOKEN']
+bot.run(access_token)
