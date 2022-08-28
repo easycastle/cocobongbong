@@ -3,7 +3,7 @@ import asyncio
 from discord.ext.commands import Cog
 from discord.commands import slash_command, Option
 
-from config import BotColor, BotVer
+from etc.config import BotColor, BotVer
 
 class Help(Cog):
     def __init__(self, bot):

@@ -5,7 +5,7 @@ from discord.commands import slash_command, Option
 from discord.ui import Button, Select, View
 from discord.utils import get
 
-from config import BotColor, BotVer
+from etc.config import SUBJECT, BotColor, BotVer
 
 from datetime import datetime
 
@@ -15,7 +15,7 @@ class Professor(Cog):
 
     @slash_command(name='수강자명단')
     @has_role('교수님')
-    async def check_students(self, ctx, subject: Option(str, '과목', choices=['C', 'Python', 'JS/TS', 'FrontEnd', 'BackEnd', 'JAVA'], required=True)):    
+    async def check_students(self, ctx, subject: Option(str, '과목', choices=SUBJECT, required=True)):    
         """교수님에게 배울 수강자 명단을 보여줍니다."""
         
         professor_roles = ctx.author.roles
@@ -23,8 +23,8 @@ class Professor(Cog):
         
         for role in professor_roles:
             if f'{subject} 교수님' == role.name:
-                students = get(ctx.guild.roles, name=f'{subject} 수강자').members
-                student_list = ''
+                students        = get(ctx.guild.roles, name=f'{subject} 수강자').members
+                student_list    = ''
                 
                 student_list_embed = discord.Embed(title='수강자 리스트', description=f'{ctx.author.mention}님의 {subject} 과목 수강자 리스트입니다.', color=BotColor)
                 for student in students:
@@ -38,6 +38,25 @@ class Professor(Cog):
         
         if not is_professor:    
             await ctx.respond(f'교수님은 {subject} 담당자가 아닙니다!')
+
+    @slash_command(name='조회')
+    @has_role('교수님')
+    async def refer_student(self, ctx, student: discord.User):
+        """수강생의 정보를 보여줍니다."""
+        
+        student_role    = map(lambda x: x.strip(' 수강자'), filter(lambda x: True if ' 수강자' in x else False, map(lambda x: x.name, student.roles)))
+        professor_role  = map(lambda x: x.strip(' 교수님'), filter(lambda x: True if ' 교수님' in x else False, map(lambda x: x.name, ctx.author.roles)))
+
+        if set(student_role) & set(professor_role) != set():
+            refer_student_embed = discord.Embed(title='학생 조회', description=f'{student.mention}님의 정보입니다.', color=BotColor)
+            refer_student_embed.add_field(name='이름', value=f'**{student.name}**', inline=False)
+            refer_student_embed.add_field(name='학번', value=f'**{student.id}**', inline=False)
+            refer_student_embed.set_footer(text=BotVer)
+            
+            await ctx.respond(embed=refer_student_embed)
+            
+        else:
+            await ctx.respond('교수님이 가르치는 수강생이 아닙니다!')
         
     @slash_command(name='출석체크')
     @has_role('교수님')
@@ -45,26 +64,26 @@ class Professor(Cog):
         """출석 체크를 진행합니다."""
         
         if  ctx.channel.name == '📋출석체크':
-            subject = ctx.channel.category.name
-            channel_member_list = set(ctx.author.voice.channel.members)
-            professor_list = list(channel_member_list & set(get(ctx.guild.roles, name=f'{subject} 교수님').members))
-            student_list = get(ctx.guild.roles, name=f'{subject} 수강자').members
-            attended_member_list = list(channel_member_list - set(professor_list))
-            absent_member_list = list(set(student_list) - set(attended_member_list))
+            subject                 = ctx.channel.category.name
+            channel_member_list     = set(ctx.author.voice.channel.members)
+            professor_list          = list(channel_member_list & set(get(ctx.guild.roles, name=f'{subject} 교수님').members))
+            student_list            = get(ctx.guild.roles, name=f'{subject} 수강자').members
+            attended_member_list    = list(channel_member_list - set(professor_list))
+            absent_member_list      = list(set(student_list) - set(attended_member_list))
             
-            professor = ''
+            professor       = ''
             attended_member = ''
-            absent_member = ''
+            absent_member   = ''
             
             for member in professor_list:
-                professor += f'{member.mention}({member.id}) '
+                professor       += f'{member.mention}({member.id}) '
             for member in attended_member_list:
                 attended_member += f'{member.mention}({member.id}) '
             for member in absent_member_list:
-                absent_member += f'{member.mention}({member.id}) '
+                absent_member   += f'{member.mention}({member.id}) '
                 
             if absent_member == '':
-                absent_member = '-'
+                absent_member   = '-'
             if attended_member == '':
                 attended_member = '-'
             

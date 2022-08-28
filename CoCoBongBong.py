@@ -5,7 +5,8 @@ from discord.commands import slash_command, Option
 from discord.ui import Button, Select, View
 from discord.utils import get
 
-from config import *
+from etc.config import *
+from etc.professor_id import professor_introduction
 
 from datetime import datetime
 
@@ -14,7 +15,7 @@ import os
 intents = discord.Intents.default()
 intents.members = True
 
-bot = discord.Bot(command_prefix="?", case_insensitive=True, intents=intents)
+bot = discord.Bot(command_prefix='?', case_insensitive=True, intents=intents)
 
 if __name__ == '__main__':
     for extension in EXTENSIONS:
