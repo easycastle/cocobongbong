@@ -14,11 +14,11 @@ class Help(Cog):
         """코코봉봉의 사용 방법을 알려줍니다."""
         
         if category == None:
-            embed = discord.Embed(title='도움말', description='아래의 명령어들을 이용해 도움말을 볼 수 있습니다.', color=BotColor)
-            embed.add_field(name=f'`/help`', value='명령어들의 종류를 크게 구분해서 보여줍니다.', inline=True)
-            embed.add_field(name=f'`/help 일반`', value='일반적으로 사용 가능한 명령어 모음입니다.', inline=True)
-            embed.add_field(name=f'`/help 교수님`', value='교수님들이 사용 가능한 명령어 모음입니다.', inline=True)
-            embed.add_field(name=f'`/help 수강자`', value='학생들이 사용 가능한 명령어입니다.', inline=True)
+            help_embed = discord.Embed(title='도움말', description='아래의 명령어들을 이용해 도움말을 볼 수 있습니다.', color=BotColor)
+            help_embed.add_field(name=f'`/help`', value='명령어들의 종류를 크게 구분해서 보여줍니다.', inline=True)
+            help_embed.add_field(name=f'`/help 일반`', value='일반적으로 사용 가능한 명령어 모음입니다.', inline=True)
+            help_embed.add_field(name=f'`/help 교수님`', value='교수님들이 사용 가능한 명령어 모음입니다.', inline=True)
+            help_embed.add_field(name=f'`/help 수강자`', value='학생들이 사용 가능한 명령어입니다.', inline=True)
         
         elif category == '일반':
             help_embed = discord.Embed(title='도움말', description='일반적으로 사용 가능한 명령어 모음입니다.', color=BotColor)

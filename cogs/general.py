@@ -27,7 +27,7 @@ class General(Cog):
         
         professor = get(ctx.guild.roles, name=subject).members
         
-        introduce_embed = discord.Embed(title='교수 소개', description=f'{subject}들의 한 줄 소개입니다.', color=BotColor)
+        introduce_embed = discord.Embed(title='교수 소개', description=f'{"모든 교수님" if subject == "교수님" else subject}들의 한 줄 소개입니다.', color=BotColor)
         for member in professor:
             introduce_embed.add_field(name=member.name, value=professor_introduction[member.id], inline=False)
         introduce_embed.set_footer(text=BotVer)
