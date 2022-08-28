@@ -63,7 +63,7 @@ class Professor(Cog):
     async def attendance_check(self, ctx):
         """출석 체크를 진행합니다."""
         
-        if  ctx.channel.name == '📋출석체크':
+        if ctx.channel.name == '📋출석체크':
             subject                 = ctx.channel.category.name
             channel_member_list     = set(ctx.author.voice.channel.members)
             professor_list          = list(channel_member_list & set(get(ctx.guild.roles, name=f'{subject} 교수님').members))

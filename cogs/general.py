@@ -22,7 +22,7 @@ class General(Cog):
         await ctx.respond(embed=my_id_embed)
         
     @slash_command(name='교수소개')
-    async def introduce(self, ctx, subject: Option(str, '과목', choices=PROFESSOR_ROLE, required=True)):
+    async def introduce(self, ctx, subject: Option(str, '과목', choices=PROFESSOR_ROLE, required=False, default='교수님')):
         """과목별 교수님의 한 줄 소개를 보여줍니다."""
         
         professor = get(ctx.guild.roles, name=subject).members
