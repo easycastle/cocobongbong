@@ -14,8 +14,7 @@ import os
 
 intents = discord.Intents.default()
 intents.members = True
-
-bot = discord.Bot(command_prefix='?', case_insensitive=True, intents=intents)
+bot = discord.Bot(intents=intents)
 
 if __name__ == '__main__':
     for extension in EXTENSIONS:

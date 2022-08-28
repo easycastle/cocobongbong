@@ -41,8 +41,8 @@ class Professor(Cog):
 
     @slash_command(name='조회')
     @has_role('교수님')
-    async def refer_student(self, ctx, student: discord.User):
-        """수강생의 정보를 보여줍니다."""
+    async def refer_student(self, ctx, student: Option(discord.Member, '조회할 학생', required=True)):
+        """수강생의 정보를 조회합니다."""
         
         student_role    = map(lambda x: x.strip(' 수강자'), filter(lambda x: True if ' 수강자' in x else False, map(lambda x: x.name, student.roles)))
         professor_role  = map(lambda x: x.strip(' 교수님'), filter(lambda x: True if ' 교수님' in x else False, map(lambda x: x.name, ctx.author.roles)))
