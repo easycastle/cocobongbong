@@ -36,7 +36,7 @@ class Student(Cog):
             check_embed.add_field(name='수강자', value=student_list if student_list != '' else '-', inline=False)
             check_embed.set_footer(text=BotVer)
             
-            await study_list.purge()           
+            await study_list.purge()
             await study_list.send(embed=check_embed)
         
     @slash_command(name='출결확인')

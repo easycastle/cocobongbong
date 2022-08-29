@@ -32,5 +32,5 @@ async def on_ready():
     
     await bot.change_presence(status=discord.Status.online, activity=discord.Game(f'/help 치면 사용법 설명'))
 
-access_token = os.environ['BOT_TOKEN']
-bot.run(access_token)
+# access_token = os.environ['BOT_TOKEN']
+bot.run('NzU4OTU5Njg2NDcyNTY0NzQ2.GuglPx.2vnDu8o7JP2E8X_XQpl3BIJw-Igjb7LSM21T18')

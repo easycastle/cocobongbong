@@ -39,14 +39,25 @@ class General(Cog):
         """수강신청을 도와줍니다."""
         
         if ctx.channel.name == '🃏수강신청':
+            study_member = ctx.guild.get_channel(1013860758553112687)
             student_role = get(ctx.guild.roles, name='수강자')
             subject_role = get(ctx.guild.roles, name=f'{subject} 수강자')
+            
+            
             
             await ctx.author.add_roles(student_role, subject_role)
             await ctx.respond(f'{subject} 과목 강의를 신청하였습니다.')
         
         else:
             await ctx.delete()
+            
+    @slash_command(name='테스트')
+    async def test(self, ctx):
+        """테스트입니다."""
+        async for message in ctx.channel.history():
+            print(message.embeds)
+                
+        await ctx.delete()
         
 def setup(bot):
     bot.add_cog(General(bot))

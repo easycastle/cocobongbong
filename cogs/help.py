@@ -10,7 +10,7 @@ class Help(Cog):
         self.bot = bot
 
     @slash_command()
-    async def help(self, ctx, category: Option(str, '명령어 카테고리', choices=['일반', '교수님', '수강자'], required=False, default=None)):
+    async def help(self, ctx, category: Option(str, '명령어 카테고리', choices=['어드민', '일반', '교수님', '수강자'], required=False, default=None)):
         """코코봉봉의 사용 방법을 알려줍니다."""
         
         if category == None:
@@ -19,6 +19,17 @@ class Help(Cog):
             help_embed.add_field(name=f'`/help 일반`', value='일반적으로 사용 가능한 명령어 모음입니다.', inline=True)
             help_embed.add_field(name=f'`/help 교수님`', value='교수님들이 사용 가능한 명령어 모음입니다.', inline=True)
             help_embed.add_field(name=f'`/help 수강자`', value='학생들이 사용 가능한 명령어입니다.', inline=True)
+        
+        elif category == '어드민':
+            help_embed = discord.Embed(title='관리자 명령어', description='관리자만 사용 가능한 명령어를 알려줄게요!', color=CoCoColor)
+            help_embed.add_field(name=f'`/kick <추방할 유저>`', value='문제가 있는 사람들을 추방시켜줄게요.', inline=True)
+            help_embed.add_field(name=f'`/ban <차단할 유저>`', value='마음에 들지 않은 사람들을 차단시켜 줄게요.', inline=True)
+            help_embed.add_field(name=f'`/chat_mute <뮤트할 유저>`', value='채팅이 시끄러운 사람들을 조용히 있게 해줄게요.', inline=True)
+            help_embed.add_field(name=f'`/chat_unmute <언뮤트할 유저>`', value='채팅이 조용해진 사람들을 말할 수 있게 해줄게요.', inline=True)
+            help_embed.add_field(name=f'`/voice_mute <뮤트할 유저>`', value='소리가 시끄러운 사람들을 조용히 있게 해줄게요.', inline=True)
+            help_embed.add_field(name=f'`/voice_unmute <언뮤트할 유저>`', value='소리가 조용해진 사람들을 말할 수 있게 해줄게요.', inline=True)
+            help_embed.add_field(name=f'`/clear`', value='많은 메세지를 한번에 삭제시켜줄게요.\n개수를 입력하지 않으면 10개를, -1을 입력하면 다 삭제할게요.', inline=True)
+            help_embed.add_field(name=f'`/log`', value='이 서버의 감사 로그를 보여줄게요.', inline=True)
         
         elif category == '일반':
             help_embed = discord.Embed(title='도움말', description='일반적으로 사용 가능한 명령어 모음입니다.', color=BotColor)
