@@ -5,7 +5,8 @@ from discord.commands import slash_command, Option
 from discord.ui import Button, Select, View
 from discord.utils import get
 
-from etc.config import SUBJECT, BotColor, BotVer
+from etc.config import BotColor, BotVer
+from etc.session_option import SUBJECT
 
 from datetime import datetime
 
@@ -63,7 +64,7 @@ class Professor(Cog):
     async def attendance_check(self, ctx):
         """출석 체크를 진행합니다."""
         
-        if ctx.channel.name == '📋출석체크':
+        if ctx.channel.name == '🙋출석체크':
             subject                 = ctx.channel.category.name
             channel_member_list     = set(ctx.author.voice.channel.members)
             professor_list          = list(channel_member_list & set(get(ctx.guild.roles, name=f'{subject} 교수님').members))
@@ -71,21 +72,21 @@ class Professor(Cog):
             attended_member_list    = list(channel_member_list - set(professor_list))
             absent_member_list      = list(set(student_list) - set(attended_member_list))
             
-            professor       = ''
-            attended_member = ''
-            absent_member   = ''
+            professor               = ''
+            attended_member         = ''
+            absent_member           = ''
             
             for member in professor_list:
-                professor       += f'{member.mention}({member.id}) '
+                professor           += f'{member.mention}({member.id}) '
             for member in attended_member_list:
-                attended_member += f'{member.mention}({member.id}) '
+                attended_member     += f'{member.mention}({member.id}) '
             for member in absent_member_list:
-                absent_member   += f'{member.mention}({member.id}) '
+                absent_member       += f'{member.mention}({member.id}) '
                 
             if absent_member == '':
-                absent_member   = '-'
+                absent_member       = '-'
             if attended_member == '':
-                attended_member = '-'
+                attended_member     = '-'
             
             attendance_check_embed = discord.Embed(title=f'{datetime.now().strftime("%Y-%m-%d")} 출석 체크', description=f'총원 {len(professor_list) + len(student_list)}명, 교수님 {len(professor_list)}명, 출석 {len(attended_member_list)}명, 결석 {len(absent_member_list)}명', color=BotColor)
             attendance_check_embed.add_field(name='교수님', value=professor, inline=False)

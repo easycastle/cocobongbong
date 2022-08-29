@@ -5,8 +5,8 @@ from discord.commands import slash_command, Option
 from discord.ui import Button, Select, View
 from discord.utils import get
 
-from etc.config import PROFESSOR_ROLE, SUBJECT, BotColor, BotVer
-from etc.professor_id import professor_introduction
+from etc.config import BotColor, BotVer
+from etc.session_option import PROFESSOR_ROLE, SUBJECT, PROFESSOR_INTRODUCTION
 
 class General(Cog):
     def __init__(self, bot):
@@ -29,7 +29,7 @@ class General(Cog):
         
         introduce_embed = discord.Embed(title='교수 소개', description=f'{"모든 교수님" if subject == None else subject}들의 한 줄 소개입니다.', color=BotColor)
         for member in professor:
-            introduce_embed.add_field(name=member.name, value=professor_introduction[member.id], inline=False)
+            introduce_embed.add_field(name=member.name, value=PROFESSOR_INTRODUCTION[member.id], inline=False)
         introduce_embed.set_footer(text=BotVer)
         
         await ctx.respond(embed=introduce_embed)

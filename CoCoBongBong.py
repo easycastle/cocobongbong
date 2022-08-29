@@ -1,19 +1,19 @@
 import discord
 import asyncio
+from discord.ext import tasks
 from discord.ext.commands import Cog, has_permissions
 from discord.commands import slash_command, Option
 from discord.ui import Button, Select, View
 from discord.utils import get
 
 from etc.config import *
-from etc.professor_id import professor_introduction
+from etc.session_option import *
 
 from datetime import datetime
 
 import os
 
-intents = discord.Intents.default()
-intents.members = True
+intents = discord.Intents.all()
 bot = discord.Bot(intents=intents)
 
 if __name__ == '__main__':
