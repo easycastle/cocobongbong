@@ -17,11 +17,11 @@ class Student(Cog):
     @tasks.loop(hours=1.0)
     async def check_study_members(self):
         
-        server                  = self.bot.get_guild(1012586500006875139)
+        server                  = await self.bot.fetch_guild(1012586500006875139)
         checklist               = dict(zip(STUDENT_LIST_CHANNEL, SUBJECT)).items()
-        
+
         for item in checklist:
-            study_list          = server.get_channel(item[0])
+            study_list          = await self.bot.fetch_channel(item[0])
             professors          = get(server.roles, name=f'{item[1]} 교수님').members
             students            = get(server.roles, name=f'{item[1]} 수강자').members
             professor_list      = ''
