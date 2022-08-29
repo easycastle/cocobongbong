@@ -1,7 +1,7 @@
 import discord
 import asyncio
 from discord.ext import tasks
-from discord.ext.commands import Cog, has_permissions
+from discord.ext.commands import Cog, has_role, has_permissions
 from discord.commands import slash_command, Option
 from discord.ui import Button, Select, View
 from discord.utils import get
@@ -15,6 +15,7 @@ import os
 
 intents = discord.Intents.default()
 intents.members = True
+intents.typing = True
 bot = discord.Bot(intents=intents)
 
 if __name__ == '__main__':
@@ -32,5 +33,5 @@ async def on_ready():
     
     await bot.change_presence(status=discord.Status.online, activity=discord.Game(f'/help 치면 사용법 설명'))
 
-access_token = os.environ['BOT_TOKEN']
-bot.run(access_token)
+# access_token = os.environ['BOT_TOKEN']
+bot.run('NzU4OTU5Njg2NDcyNTY0NzQ2.GnGF5j.L2yqZ3EJc6JTTHi_A56WVjHbbbH1HGuwmrzWS8')

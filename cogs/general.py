@@ -6,7 +6,9 @@ from discord.ui import Button, Select, View
 from discord.utils import get
 
 from etc.config import BotColor, BotVer
-from etc.session_option import PROFESSOR_ROLE, SUBJECT, PROFESSOR_INTRODUCTION
+from etc.session_option import PROFESSOR_ROLE, SUBJECT, PROFESSOR_INTRODUCTION, update_log_channel
+
+import itertools
 
 class General(Cog):
     def __init__(self, bot):
@@ -39,23 +41,24 @@ class General(Cog):
         """수강신청을 도와줍니다."""
         
         if ctx.channel.name == '🃏수강신청':
-            study_member = ctx.guild.get_channel(1013860758553112687)
             student_role = get(ctx.guild.roles, name='수강자')
             subject_role = get(ctx.guild.roles, name=f'{subject} 수강자')
             
-            
-            
             await ctx.author.add_roles(student_role, subject_role)
             await ctx.respond(f'{subject} 과목 강의를 신청하였습니다.')
-        
+            
+            await update_log_channel(ctx, '수강자')
+            
         else:
             await ctx.delete()
             
     @slash_command(name='테스트')
     async def test(self, ctx):
         """테스트입니다."""
-        async for message in ctx.channel.history():
-            print(message.embeds)
+        
+        messages = [message async for message in ctx.channel.history()]
+        for i in messages:
+            await i.edit(embed=discord.Embed(title='asdf'))
                 
         await ctx.delete()
         
