@@ -13,7 +13,8 @@ from datetime import datetime
 
 import os
 
-intents = discord.Intents.all()
+intents = discord.Intents.default()
+intents.members = True
 bot = discord.Bot(intents=intents)
 
 if __name__ == '__main__':
