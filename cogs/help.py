@@ -51,7 +51,7 @@ class Help(Cog):
             help_embed.add_field(name='`/출결확인 <과목>`', value='출결 상황을 보여줍니다.', inline=True)
         
         help_embed.set_footer(text=BotVer)
-            
+        
         await ctx.respond(embed=help_embed)
 
 def setup(bot):

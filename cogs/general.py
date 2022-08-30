@@ -6,7 +6,7 @@ from discord.ui import Button, Select, View
 from discord.utils import get
 
 from etc.config import BotColor, BotVer
-from etc.session_option import PROFESSOR_ROLE, SUBJECT, PROFESSOR_INTRODUCTION
+from etc.session_option import SUBJECT, PROFESSOR_INTRODUCTION
 
 import itertools
 
@@ -24,12 +24,12 @@ class General(Cog):
         await ctx.respond(embed=my_id_embed)
         
     @slash_command(name='교수소개')
-    async def introduce(self, ctx, subject: Option(str, '과목', choices=PROFESSOR_ROLE, required=False, default=None)):
+    async def introduce(self, ctx, subject: Option(str, '과목', choices=SUBJECT, required=False, default=None)):
         """과목별 교수님의 한 줄 소개를 보여줍니다."""
         
-        professor = get(ctx.guild.roles, name='교수님' if subject == None else subject).members
+        professor = get(ctx.guild.roles, name='교수님' if subject == None else f'{subject} 교수님').members
         
-        introduce_embed = discord.Embed(title='교수 소개', description=f'{"모든 교수님" if subject == None else subject}들의 한 줄 소개입니다.', color=BotColor)
+        introduce_embed = discord.Embed(title='교수 소개', description=f'{"모든" if subject == None else subject} 교수님들의 한 줄 소개입니다.', color=BotColor)
         for member in professor:
             introduce_embed.add_field(name=member.name, value=PROFESSOR_INTRODUCTION[member.id], inline=False)
         introduce_embed.set_footer(text=BotVer)

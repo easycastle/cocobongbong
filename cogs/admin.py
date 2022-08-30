@@ -5,7 +5,7 @@ from discord.commands import slash_command, Option
 from discord.ui import Button, View
 from discord.utils import get
 
-from etc.session_option import SUBJECT, PROFESSOR_ROLE
+from etc.session_option import SUBJECT
 from etc.log_translation import translateLog
 
 from etc.config import BotColor
@@ -20,24 +20,24 @@ class Admin(Cog):
 
     @slash_command(name='교수임용')
     @has_role('관리자')
-    async def hire_professor(self, ctx, who: Option(discord.Member, '임용할 스터디원', required=True), subject: Option(str, '과목', choices=PROFESSOR_ROLE, required=True)):
+    async def hire_professor(self, ctx, who: Option(discord.Member, '임용할 스터디원', required=True), subject: Option(str, '과목', choices=SUBJECT, required=True)):
         """해당 스터디원을 교수로 임용합니다."""
         
         professor_role = get(ctx.guild.roles, name='교수님')
-        subject_role = get(ctx.guild.roles, name=subject)
+        subject_role = get(ctx.guild.roles, name=f'{subject} 교수님')
         
         await who.add_roles(professor_role, subject_role)
-        await ctx.respond(f'{who.mention}님이 {subject}으로 임용되었습니다.')
+        await ctx.respond(f'{who.mention}님이 {subject} 과목을 가르칠 교수님으로 임용되었습니다.')
         
     @slash_command(name='교수파면')
     @has_role('관리자')
-    async def dismiss_professor(self, ctx, who: Option(discord.Member, '파면시킬 교수', required=True), subject: Option(str, '과목', choices=PROFESSOR_ROLE, required=True)):
+    async def dismiss_professor(self, ctx, who: Option(discord.Member, '파면시킬 교수', required=True), subject: Option(str, '과목', choices=SUBJECT, required=True)):
         """해당 교수님을 파면합니다."""
         
-        subject_role = get(ctx.guild.roles, name=subject)
+        subject_role = get(ctx.guild.roles, name=f'{subject} 교수님')
         
         await who.remove_roles(subject_role)
-        await ctx.respond(f'{who.mention}님의 {subject} 직급이 파면되었습니다.')
+        await ctx.respond(f'{who.mention}님은 {subject} 과목의 교수직에서 파면되었습니다.')
 
     @slash_command()
     @has_permissions(administrator=True)
