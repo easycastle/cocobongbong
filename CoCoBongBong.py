@@ -47,5 +47,5 @@ async def on_member_update(before, after):
         category = list(set(after_roles) - set(before_roles))[0].name[-3:] if len(after_roles) > len(before_roles) else list(set(before_roles) - set(after_roles))[0].name[-3:]
         await update_log_channel(guild, category)
 
-# access_token = os.environ['BOT_TOKEN']
-bot.run('NzU4OTU5Njg2NDcyNTY0NzQ2.GkexuV.SqH240bG3YAc5qjzV05BZOvff2sNeFvMJErnrY')
+access_token = os.environ['BOT_TOKEN']
+bot.run(access_token)
