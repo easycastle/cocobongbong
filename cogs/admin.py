@@ -5,7 +5,7 @@ from discord.commands import slash_command, Option
 from discord.ui import Button, View
 from discord.utils import get
 
-from etc.session_option import SUBJECT, PROFESSOR_ROLE, update_log_channel
+from etc.session_option import SUBJECT, PROFESSOR_ROLE
 from etc.log_translation import translateLog
 
 from etc.config import BotColor
@@ -28,8 +28,6 @@ class Admin(Cog):
         
         await who.add_roles(professor_role, subject_role)
         await ctx.respond(f'{who.mention}님이 {subject}으로 임용되었습니다.')
-
-        await update_log_channel(ctx, '교수님')
         
     @slash_command(name='교수파면')
     @has_role('관리자')
@@ -40,8 +38,6 @@ class Admin(Cog):
         
         await who.remove_roles(subject_role)
         await ctx.respond(f'{who.mention}님의 {subject} 직급이 파면되었습니다.')
-
-        await update_log_channel(ctx, '교수님')
 
     @slash_command()
     @has_permissions(administrator=True)
@@ -179,7 +175,7 @@ class Admin(Cog):
     @slash_command()
     @has_permissions(administrator=True)
     async def log(self, ctx, amount: Option(int, '로그 갯수', required=False, default=10), moderator: Option(discord.Member, '로그 주체', required=False, default=None)):
-        """이 서버의 감사 로그를 보여줄게요."""
+        """이 서버의 감사 로그를 보여줍니다."""
         global logList
         global embedPage
         

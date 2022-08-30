@@ -44,15 +44,15 @@ STUDENT_LIST_CHANNEL = [
     1013610498756988928, 
     ]
 
-async def update_log_channel(ctx, job):
-    member_list_channel = get(ctx.guild.channels, name=f'📋{job}')
+async def update_log_channel(guild, category):
+    member_list_channel = get(guild.channels, name=f'📋{category}')
     position = member_list_channel.position
     new_channel = await member_list_channel.clone()
     await member_list_channel.delete()
     await new_channel.edit(position=position)
         
     for subject in SUBJECT:
-            members = get(ctx.guild.roles, name=f'{subject} {job}').members
+            members = get(guild.roles, name=f'{subject} {category}').members
             member_list = ''
             for member in members:
                 member_list += f'{member.mention} ({member.id})\n'
