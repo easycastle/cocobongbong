@@ -49,16 +49,6 @@ class General(Cog):
             
         else:
             await ctx.delete()
-            
-    # @slash_command(name='테스트')
-    # async def test(self, ctx):
-    #     """테스트입니다."""
-        
-    #     messages = [message async for message in ctx.channel.history()]
-    #     for i in messages:
-    #         await i.edit(embed=discord.Embed(title='asdf'))
-                
-    #     await ctx.delete()
         
 def setup(bot):
     bot.add_cog(General(bot))

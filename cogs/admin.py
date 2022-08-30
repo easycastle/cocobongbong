@@ -5,7 +5,7 @@ from discord.commands import slash_command, Option
 from discord.ui import Button, View
 from discord.utils import get
 
-from etc.session_option import SUBJECT
+from etc.session_option import SUBJECT, check_subject, basic_permission, professor_overwrite, student_overwrite
 from etc.log_translation import translateLog
 
 from etc.config import BotColor
@@ -17,6 +17,43 @@ embedPage = None    # 임베드 페이지 (0에서 시작)
 class Admin(Cog):
     def __init__(self, bot):
         self.bot = bot
+
+    @slash_command(name='개설')
+    @has_role('관리자')
+    async def open_session(self, ctx, name: Option(str, '강의실 이름', required=True), color: Option(str, '역할 색상', required=True)):
+        """원하는 주제의 강의실을 개설합니다."""
+        
+        if ' ' in name:
+            await ctx.respond('강의명에 공백은 넣을 수 없습니다!')
+        else:
+            professor_role = await ctx.guild.create_role(name=f'{name} 교수님', permissions=basic_permission, color=int(f'0x{color}', 16))
+            student_role = await ctx.guild.create_role(name=f'{name} 수강자', permissions=basic_permission, color=int(f'0x{color}', 16))
+            
+            prev_professor_position = get(ctx.guild.roles, name=f'{SUBJECT[-1]} 교수님').position
+            await professor_role.edit(position=prev_professor_position-1)
+            prev_student_position = get(ctx.guild.roles, name=f'{SUBJECT[-1]} 수강자').position
+            await student_role.edit(position=prev_student_position-1)
+            
+            category = await ctx.guild.create_category(name=name, position=len(ctx.guild.categories))
+            await category.set_permissions(get(ctx.guild.roles, name='@everyone'), view_channel=False, connect=False)
+            await category.set_permissions(professor_role, overwrite=professor_overwrite)
+            await category.set_permissions(student_role, overwrite=student_overwrite)
+            
+            announcement = await category.create_text_channel('📢공지')
+            studying = await category.create_text_channel('📝공부방')
+            archive = await category.create_text_channel('📂자료실')
+            question = await category.create_text_channel('❓질문')
+            attendance = await category.create_text_channel('🙋출석체크')
+            classroom = await category.create_voice_channel('🏫강의실')
+            
+            announcement.edit(sync_permissions=True)
+            studying.edit(sync_permissions=True)
+            archive.edit(sync_permissions=True)
+            question.edit(sync_permissions=True)
+            attendance.edit(sync_permissions=True)
+            classroom.edit(sync_permissions=True)
+            
+            await ctx.respond(f'{name} 과목이 개설되었습니다.')
 
     @slash_command(name='교수임용')
     @has_role('관리자')
@@ -274,6 +311,21 @@ class Admin(Cog):
             view.add_item(topRightBtn)
 
             page = await ctx.respond(embed=logEmbed, view=view)
+            
+    @slash_command(name='복구', guild_ids=[1012586500006875139])
+    @has_role('관리자')
+    async def recover(self, ctx, content: Option(str, '복구할 내용', required=True)):
+        """손실된 DB를 복구합니다."""
+        
+        recover_embed = discord.Embed(title='복구 임베드', description=content, color=BotColor)
+        recover_embed.set_footer(text=BotVer)
+        
+        await ctx.send(embed=recover_embed)
+        await ctx.delete()
+        
+        print(await check_subject(ctx))
+        # for i in check_subject(ctx.guild):
+        #     print(i)
         
 def setup(bot):
     bot.add_cog(Admin(bot))

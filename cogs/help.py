@@ -33,6 +33,7 @@ class Help(Cog):
             help_embed.add_field(name=f'`/voice_unmute <언뮤트할 유저>`', value='소리가 조용해진 사람들을 말할 수 있게 해줍니다.', inline=True)
             help_embed.add_field(name=f'`/clear`', value='많은 메세지를 한번에 삭제합니다.', inline=True)
             help_embed.add_field(name=f'`/log`', value='이 서버의 감사 로그를 보여줍니다.', inline=True)
+            help_embed.add_field(name=f'`/복구`', value='손실된 DB를 복구합니다.', inline=True)
         
         elif category == '일반':
             help_embed = discord.Embed(title='도움말', description='모든 스터디원이 사용 가능한 명령어 모음입니다.', color=BotColor)
