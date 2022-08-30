@@ -16,12 +16,13 @@ class Help(Cog):
         if category == None:
             help_embed = discord.Embed(title='도움말', description='아래의 명령어들을 이용해 도움말을 볼 수 있습니다.', color=BotColor)
             help_embed.add_field(name=f'`/help`', value='명령어들의 종류를 크게 구분해서 보여줍니다.', inline=True)
+            help_embed.add_field(name=f'`/help 어드민`', value='관리자만 사용 가능한 명령어 모음입니다.', inline=True)
             help_embed.add_field(name=f'`/help 일반`', value='일반적으로 사용 가능한 명령어 모음입니다.', inline=True)
             help_embed.add_field(name=f'`/help 교수님`', value='교수님들이 사용 가능한 명령어 모음입니다.', inline=True)
             help_embed.add_field(name=f'`/help 수강자`', value='학생들이 사용 가능한 명령어입니다.', inline=True)
         
         elif category == '어드민':
-            help_embed = discord.Embed(title='관리자 명령어', description='관리자만 사용 가능한 명령어를 알려줄게요!', color=CoCoColor)
+            help_embed = discord.Embed(title='관리자 명령어', description='관리자만 사용 가능한 명령어 모음입니다.', color=BotColor)
             help_embed.add_field(name=f'`/교수임용 <임용할 스터디원> <과목>`', value='해당 스터디원을 교수로 임용합니다.', inline=True)
             help_embed.add_field(name=f'`/교수파면 <파면시킬 교수> <과목>`', value='해당 교수님을 파면합니다.', inline=True)
             help_embed.add_field(name=f'`/kick <추방할 유저>`', value='문제가 있는 사람들을 추방합니다.', inline=True)
