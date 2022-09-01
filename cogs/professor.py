@@ -6,7 +6,7 @@ from discord.ui import Button, Select, View
 from discord.utils import get
 
 from etc.config import BotColor, BotVer
-from etc.session_option import SUBJECT
+from etc.db import check_subject
 
 from datetime import datetime
 
@@ -16,7 +16,7 @@ class Professor(Cog):
 
     @slash_command(name='수강자명단')
     @has_role('교수님')
-    async def check_students(self, ctx, subject: Option(str, '과목', choices=SUBJECT, required=True)):    
+    async def check_students(self, ctx, subject: Option(str, '과목', choices=check_subject(), required=True)):    
         """교수님에게 배울 수강자 명단을 보여줍니다."""
         
         professor_roles = ctx.author.roles

@@ -6,7 +6,8 @@ from discord.ui import Button, Select, View
 from discord.utils import get
 
 from etc.config import BotColor, BotVer
-from etc.session_option import SUBJECT, PROFESSOR_INTRODUCTION
+from etc.session_option import PROFESSOR_INTRODUCTION
+from etc.db import check_subject
 
 import itertools
 
@@ -24,7 +25,7 @@ class General(Cog):
         await ctx.respond(embed=my_id_embed)
         
     @slash_command(name='교수소개')
-    async def introduce(self, ctx, subject: Option(str, '과목', choices=SUBJECT, required=False, default=None)):
+    async def introduce(self, ctx, subject: Option(str, '과목', choices=check_subject(), required=False, default=None)):
         """과목별 교수님의 한 줄 소개를 보여줍니다."""
         
         professor = get(ctx.guild.roles, name='교수님' if subject == None else f'{subject} 교수님').members
@@ -36,8 +37,8 @@ class General(Cog):
         
         await ctx.respond(embed=introduce_embed)
         
-    @slash_command(name='수강신청')
-    async def register(self, ctx, subject: Option(str, '과목', choices=SUBJECT, required=True)):
+    @slash_command(name='수강신청', guild_ids=[1012586500006875139])
+    async def register(self, ctx, subject: Option(str, '과목', choices=check_subject(), required=True)):
         """수강신청을 도와줍니다."""
         
         if ctx.channel.name == '🃏수강신청':

@@ -2,17 +2,17 @@ import discord
 import asyncio
 from discord.ext.commands import Cog, has_role, has_permissions
 from discord.commands import slash_command, Option
-from discord.ui import Button, View
+from discord.ui import Select, View
 from discord.utils import get
 
-from etc.session_option import SUBJECT, check_subject, basic_permission, professor_overwrite, student_overwrite
+from etc.config import BotColor, BotVer
+from etc.session_option import basic_permission, professor_overwrite, student_overwrite
+from etc.db import check_subject
 from etc.log_translation import translateLog
-
-from etc.config import BotColor
-from etc.config import BotVer
 
 logList = None      # log 10개씩 하나로 담은 리스트
 embedPage = None    # 임베드 페이지 (0에서 시작)
+subject = check_subject()
 
 class Admin(Cog):
     def __init__(self, bot):
@@ -26,13 +26,17 @@ class Admin(Cog):
         if ' ' in name:
             await ctx.respond('강의명에 공백은 넣을 수 없습니다!')
         else:
+            global subject
+            
             professor_role = await ctx.guild.create_role(name=f'{name} 교수님', permissions=basic_permission, color=int(f'0x{color}', 16))
             student_role = await ctx.guild.create_role(name=f'{name} 수강자', permissions=basic_permission, color=int(f'0x{color}', 16))
             
-            prev_professor_position = get(ctx.guild.roles, name=f'{SUBJECT[-1]} 교수님').position
+            prev_professor_position = get(ctx.guild.roles, name=f'{subject[-1]} 교수님').position
             await professor_role.edit(position=prev_professor_position-1)
-            prev_student_position = get(ctx.guild.roles, name=f'{SUBJECT[-1]} 수강자').position
+            prev_student_position = get(ctx.guild.roles, name=f'{subject[-1]} 수강자').position
             await student_role.edit(position=prev_student_position-1)
+            
+            # todo: create_subject 만들기
             
             category = await ctx.guild.create_category(name=name, position=len(ctx.guild.categories))
             await category.set_permissions(get(ctx.guild.roles, name='@everyone'), view_channel=False, connect=False)
@@ -57,7 +61,7 @@ class Admin(Cog):
 
     @slash_command(name='교수임용')
     @has_role('관리자')
-    async def hire_professor(self, ctx, who: Option(discord.Member, '임용할 스터디원', required=True), subject: Option(str, '과목', choices=SUBJECT, required=True)):
+    async def hire_professor(self, ctx, who: Option(discord.Member, '임용할 스터디원', required=True), subject: Option(str, '과목', choices=subject, required=True)):
         """해당 스터디원을 교수로 임용합니다."""
         
         professor_role = get(ctx.guild.roles, name='교수님')
@@ -68,7 +72,7 @@ class Admin(Cog):
         
     @slash_command(name='교수파면')
     @has_role('관리자')
-    async def dismiss_professor(self, ctx, who: Option(discord.Member, '파면시킬 교수', required=True), subject: Option(str, '과목', choices=SUBJECT, required=True)):
+    async def dismiss_professor(self, ctx, who: Option(discord.Member, '파면시킬 교수', required=True), subject: Option(str, '과목', choices=subject, required=True)):
         """해당 교수님을 파면합니다."""
         
         subject_role = get(ctx.guild.roles, name=f'{subject} 교수님')
@@ -322,10 +326,6 @@ class Admin(Cog):
         
         await ctx.send(embed=recover_embed)
         await ctx.delete()
-        
-        print(await check_subject(ctx))
-        # for i in check_subject(ctx.guild):
-        #     print(i)
         
 def setup(bot):
     bot.add_cog(Admin(bot))
