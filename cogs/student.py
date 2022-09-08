@@ -14,7 +14,7 @@ class Student(Cog):
         
     @slash_command(name='출결확인')
     @has_role('수강자')
-    async def confirm_attendance(self, ctx, subject: Option(str, '과목', choices=check_subject(), required=True)):
+    async def confirm_attendance(self, ctx, subject: Option(str, '과목', choices=get_subject(), required=True)):
         """출결 상황을 보여줍니다."""
         
         student         = ctx.author

@@ -7,38 +7,36 @@ from discord.utils import get
 
 from etc.config import BotColor, BotVer
 from etc.session_option import basic_permission, professor_overwrite, student_overwrite
-from etc.db import check_subject
+from etc.db import get_subject, create_subject
 from etc.log_translation import translateLog
 
 logList = None      # log 10개씩 하나로 담은 리스트
 embedPage = None    # 임베드 페이지 (0에서 시작)
-subject = check_subject()
 
 class Admin(Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @slash_command(name='개설')
+    @slash_command(name='개설', guild_ids=[1012586500006875139])
     @has_role('관리자')
-    async def open_session(self, ctx, name: Option(str, '강의실 이름', required=True), color: Option(str, '역할 색상', required=True)):
+    async def open_session(self, ctx, new_subject: Option(str, '강의실 이름', required=True), color: Option(str, '역할 색상', required=True)):
         """원하는 주제의 강의실을 개설합니다."""
         
-        if ' ' in name:
+        if ' ' in new_subject:
             await ctx.respond('강의명에 공백은 넣을 수 없습니다!')
         else:
-            global subject
+            await ctx.defer()
             
-            professor_role = await ctx.guild.create_role(name=f'{name} 교수님', permissions=basic_permission, color=int(f'0x{color}', 16))
-            student_role = await ctx.guild.create_role(name=f'{name} 수강자', permissions=basic_permission, color=int(f'0x{color}', 16))
+            subject = get_subject()
+            professor_role = await ctx.guild.create_role(name=f'{new_subject} 교수님', permissions=basic_permission, color=int(f'0x{color}', 16))
+            student_role = await ctx.guild.create_role(name=f'{new_subject} 수강자', permissions=basic_permission, color=int(f'0x{color}', 16))
             
             prev_professor_position = get(ctx.guild.roles, name=f'{subject[-1]} 교수님').position
             await professor_role.edit(position=prev_professor_position-1)
             prev_student_position = get(ctx.guild.roles, name=f'{subject[-1]} 수강자').position
             await student_role.edit(position=prev_student_position-1)
             
-            # todo: create_subject 만들기
-            
-            category = await ctx.guild.create_category(name=name, position=len(ctx.guild.categories))
+            category = await ctx.guild.create_category(name=new_subject, position=len(ctx.guild.categories))
             await category.set_permissions(get(ctx.guild.roles, name='@everyone'), view_channel=False, connect=False)
             await category.set_permissions(professor_role, overwrite=professor_overwrite)
             await category.set_permissions(student_role, overwrite=student_overwrite)
@@ -48,16 +46,20 @@ class Admin(Cog):
             archive = await category.create_text_channel('📂자료실')
             question = await category.create_text_channel('❓질문')
             attendance = await category.create_text_channel('🙋출석체크')
+            assignment = await category.create_text_channel('🎃과제-정답')
             classroom = await category.create_voice_channel('🏫강의실')
             
-            announcement.edit(sync_permissions=True)
-            studying.edit(sync_permissions=True)
-            archive.edit(sync_permissions=True)
-            question.edit(sync_permissions=True)
-            attendance.edit(sync_permissions=True)
-            classroom.edit(sync_permissions=True)
+            await announcement.edit(sync_permissions=True)
+            await studying.edit(sync_permissions=True)
+            await archive.edit(sync_permissions=True)
+            await question.edit(sync_permissions=True)
+            await attendance.edit(sync_permissions=True)
+            await assignment.edit(sync_permissions=True)
+            await classroom.edit(sync_permissions=True)
             
-            await ctx.respond(f'{name} 과목이 개설되었습니다.')
+            create_subject(new_subject=new_subject)
+            
+            await ctx.respond(f'{new_subject} 과목이 개설되었습니다.')
 
     @slash_command(name='교수임용')
     @has_role('관리자')

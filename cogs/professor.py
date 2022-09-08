@@ -16,29 +16,34 @@ class Professor(Cog):
 
     @slash_command(name='수강자명단')
     @has_role('교수님')
-    async def check_students(self, ctx, subject: Option(str, '과목', choices=check_subject(), required=True)):    
+    async def check_students(self, ctx, student_role: Option(discord.Role, '조회할 학생', required=True)):    
         """교수님에게 배울 수강자 명단을 보여줍니다."""
         
-        professor_roles = ctx.author.roles
-        is_professor = False
-        
-        for role in professor_roles:
-            if f'{subject} 교수님' == role.name:
-                students        = get(ctx.guild.roles, name=f'{subject} 수강자').members
-                student_list    = ''
-                
-                student_list_embed = discord.Embed(title='수강자 리스트', description=f'{ctx.author.mention}님의 {subject} 과목 수강자 리스트입니다.', color=BotColor)
-                for student in students:
-                    student_list += f'{student.name} ({student.id})\n'
-                student_list_embed.add_field(name=f'{subject} 수강자', value=student_list)
-                student_list_embed.set_footer(text=BotVer)
-                
-                await ctx.respond(embed=student_list_embed)
-                is_professor = True
-                break
-        
-        if not is_professor:    
-            await ctx.respond(f'교수님은 {subject} 담당자가 아닙니다!')
+        if student_role.name[-3:] != '수강자':
+            await ctx.respond('올바른 역할이 아닙니다!')
+            
+        else:
+            professor_roles = ctx.author.roles
+            subject = student_role.name[0:-4]
+            is_professor = False
+            
+            for role in professor_roles:
+                if f'{subject} 교수님' == role.name:
+                    students        = get(ctx.guild.roles, name=f'{student_role.name}').members
+                    student_list    = ''
+                    
+                    student_list_embed = discord.Embed(title='수강자 리스트', description=f'{ctx.author.mention}님의 {subject} 과목 수강자 리스트입니다.', color=BotColor)
+                    for student in students:
+                        student_list += f'{student.mention} ({student.id})\n'
+                    student_list_embed.add_field(name=f'{role.name}', value=student_list)
+                    student_list_embed.set_footer(text=BotVer)
+                    
+                    await ctx.respond(embed=student_list_embed)
+                    is_professor = True
+                    break
+            
+            if not is_professor:    
+                await ctx.respond(f'교수님은 {subject} 담당자가 아닙니다!')
 
     @slash_command(name='조회')
     @has_role('교수님')

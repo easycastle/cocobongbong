@@ -23,6 +23,7 @@ class Help(Cog):
         
         elif category == '어드민':
             help_embed = discord.Embed(title='관리자 명령어', description='관리자만 사용 가능한 명령어 모음입니다.', color=BotColor)
+            help_embed.add_field(name=f'`/개설 <강의실 이름> <역할 색상>`', value='원하는 주제의 강의실을 개설합니다.', inline=True)
             help_embed.add_field(name=f'`/교수임용 <임용할 스터디원> <과목>`', value='해당 스터디원을 교수로 임용합니다.', inline=True)
             help_embed.add_field(name=f'`/교수파면 <파면시킬 교수> <과목>`', value='해당 교수님을 파면합니다.', inline=True)
             help_embed.add_field(name=f'`/kick <추방할 유저>`', value='문제가 있는 사람들을 추방합니다.', inline=True)

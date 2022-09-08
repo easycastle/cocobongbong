@@ -10,7 +10,6 @@ from etc.config import *
 from etc.session_option import *
 
 from datetime import datetime
-import notion_database
 
 import os
 
