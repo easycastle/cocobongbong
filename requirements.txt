@@ -2,4 +2,3 @@ py-cord==2.0.0b7
 asyncio
 datetime
 requests
-json==2.0.9
