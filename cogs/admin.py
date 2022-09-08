@@ -63,7 +63,7 @@ class Admin(Cog):
 
     @slash_command(name='교수임용')
     @has_role('관리자')
-    async def hire_professor(self, ctx, who: Option(discord.Member, '임용할 스터디원', required=True), subject: Option(str, '과목', choices=subject, required=True)):
+    async def hire_professor(self, ctx, who: Option(discord.Member, '임용할 스터디원', required=True), subject: Option(str, '과목', choices=get_subject(), required=True)):
         """해당 스터디원을 교수로 임용합니다."""
         
         professor_role = get(ctx.guild.roles, name='교수님')
@@ -74,7 +74,7 @@ class Admin(Cog):
         
     @slash_command(name='교수파면')
     @has_role('관리자')
-    async def dismiss_professor(self, ctx, who: Option(discord.Member, '파면시킬 교수', required=True), subject: Option(str, '과목', choices=subject, required=True)):
+    async def dismiss_professor(self, ctx, who: Option(discord.Member, '파면시킬 교수', required=True), subject: Option(str, '과목', choices=get_subject(), required=True)):
         """해당 교수님을 파면합니다."""
         
         subject_role = get(ctx.guild.roles, name=f'{subject} 교수님')
