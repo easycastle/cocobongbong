@@ -6,7 +6,6 @@ from discord.ui import Button, Select, View
 from discord.utils import get
 
 from etc.config import BotColor, BotVer
-from etc.session_option import PROFESSOR_INTRODUCTION
 from etc.db import  database_id, get_db, get_subject, get_professor_inform
 
 class General(Cog):
