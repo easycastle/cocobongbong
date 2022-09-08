@@ -6,7 +6,7 @@ from discord.ui import Button, Select, View
 from discord.utils import get
 
 from etc.config import BotColor, BotVer
-from etc.db import check_subject
+from etc.db import get_subject
 
 class Student(Cog):
     def __init__(self, bot):
