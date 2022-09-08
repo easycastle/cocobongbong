@@ -1,6 +1,5 @@
 py-cord==2.0.0b7
 asyncio
 datetime
-notion_database
 requests
 json
