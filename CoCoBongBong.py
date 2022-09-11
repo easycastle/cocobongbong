@@ -48,4 +48,4 @@ async def on_member_update(before, after):
         await update_log_channel(guild, category)
 
 access_token = os.environ['BOT_TOKEN']
-bot.run(acess_token)
+bot.run(access_token)
