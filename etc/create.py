@@ -1,38 +1,24 @@
 import requests, json
 
-# def createPage(databaseId, headers):
+token = "secret_KqzDNQ5Ieq9mbswQCvhQyxYj9h8g7OQVctziq5im1JU"
 
-#     createdUrl = "https://api.notion.com/v1/pages"
+database_id = "5b51b804b0204c5badc31ebc69ec9bea"
 
-    
-#     newPageData = {
-#                 "parent": {"database_id": databaseId},
-#                 "properties": {
-#                     "과목": {
-#                         "title": [
-#                             {
-#                                 "text": {
-#                                     "content": 'asdf'
-#                                 }
-#                             }
-#                         ]
-#                     }, 
-#                     "과목번호": {
-#                         "number": 6
-#                     }
-#                 }
-#             }
-
-#     data = json.dumps(newPageData)
-
-#     res = requests.post(createdUrl, headers=headers, data=data)
-
-#     print(res.text)
+headers = {
+    "Authorization": "Bearer " + token,
+    "Content-Type": "application/json",
+    "Notion-Version": "2022-02-22"
+}
         
-def create_subject(new_subject, database_id, headers):
-    create_url = "https://api.notion.com/v1/pages"
+def create_subject(new_subject, database_id=database_id, headers=headers):
+    read_url = f'https://api.notion.com/v1/databases/{database_id}/query'
+        
+    read_res = requests.post(read_url, headers=headers)
+    read_data = read_res.json()['results']
     
-    # subject_id = len(get_db(database_id))
+    subject_id = len(read_data)
+
+    create_url = "https://api.notion.com/v1/pages"
 
     new_subject_data = {
         "parent": {"database_id": database_id},
@@ -47,24 +33,10 @@ def create_subject(new_subject, database_id, headers):
                 ]
             }, 
             "과목번호": {
-                "number": 9
+                "number": subject_id
             }
         }
     }
     data = json.dumps(new_subject_data)
 
-    res = requests.post(url=create_url, headers=headers, data=data)
-    print(res.text)
-        
-token = "secret_VNFjX2dIU8pYvRT9Mdgax09UPWrN4Z6qBMWb7ANtHFq"
-
-databaseId = "5b51b804b0204c5badc31ebc69ec9bea"
-
-headers = {
-    "Authorization": "Bearer " + token,
-    "Content-Type": "application/json",
-    "Notion-Version": "2022-02-22"
-}
-
-# createPage(databaseId, headers)
-create_subject('new_subject', databaseId, headers)
+    requests.post(url=create_url, headers=headers, data=data)

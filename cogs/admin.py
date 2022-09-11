@@ -7,7 +7,8 @@ from discord.utils import get
 
 from etc.config import BotColor, BotVer
 from etc.session_option import basic_permission, professor_overwrite, student_overwrite
-from etc.db import get_subject, create_subject
+from etc.db import database_id, token, headers, get_subject
+from etc.create import create_subject
 from etc.log_translation import translateLog
 
 logList = None      # log 10개씩 하나로 담은 리스트
@@ -57,7 +58,7 @@ class Admin(Cog):
             await assignment.edit(sync_permissions=True)
             await classroom.edit(sync_permissions=True)
             
-            create_subject(new_subject=new_subject)
+            create_subject(new_subject)
             
             await ctx.respond(f'{new_subject} 과목이 개설되었습니다.')
 
