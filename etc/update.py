@@ -1,36 +1,27 @@
 import requests, json
 
 def updatePage(page_id, headers):
-    updateUrl = f"https://api.notion.com/v1/pages/{page_id}"
-
-    updateData = {
+    update_data = {
         "properties": {
-            "과목": {
-                "title": [
+            "조교님": {
+                "rich_text": [
                     {
                         "text": {
-                            "content": "C"
+                            "content": "asdf"
                         }
                     }
                 ]
-            },
-            "과목번호": {
-                "number": 7
             }
         }
     }
 
-    data = json.dumps(updateData)
 
-    response = requests.request('PATCH', updateUrl, headers=headers, data=data)
-
-    print(response.status_code)
-    print(response.text)
+    response = requests.patch(f'https://api.notion.com/v1/pages/{page_id}', headers=headers, data=json.dumps(update_data))
         
-token = "secret_WAK9yZqCfV0rMKmE13WqHEnqxNJEWnpQVuNjYzmtUXv"
+token = "secret_KqzDNQ5Ieq9mbswQCvhQyxYj9h8g7OQVctziq5im1JU"
 
 databaseId = "5b51b804b0204c5badc31ebc69ec9bea"
-page_id = '2b4b6eee2bb244a3b709e4e074634147'
+page_id = 'c610a807ae8a4ff2b3a7b6821f434299'
 
 
 headers = {

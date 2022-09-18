@@ -6,10 +6,11 @@ from discord.ui import Select, View
 from discord.utils import get
 
 from etc.config import BotColor, BotVer
-from etc.db import delete_subject
+from etc.db import *
 from etc.session_option import basic_permission, professor_overwrite, student_overwrite
-from etc.create import create_subject
 from etc.log_translation import translateLog
+
+import requests, json
 
 logList = None      # log 10개씩 하나로 담은 리스트
 embedPage = None    # 임베드 페이지 (0에서 시작)
@@ -58,11 +59,34 @@ class Admin(Cog):
             await assignment.edit(sync_permissions=True)
             await classroom.edit(sync_permissions=True)
             
-            create_subject(f'{new_subject} <{professor.name}>', str(professor.id))
-            
             professor_role = get(ctx.guild.roles, name='교수님')
-        
             await professor.add_roles(professor_role, subject_professor_role)
+            
+            new_subject_data = {
+                "parent": {"database_id": database_id['subject']},
+                "properties": {
+                    "과목": {
+                        "title": [
+                            {
+                                "text": {
+                                    "content": f'{new_subject} <{professor.name}>'
+                                }
+                            }
+                        ]
+                    }, 
+                    "교수님": {
+                        "rich_text": [
+                            {
+                                "text": {
+                                    "content": str(professor.id)
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+            res = requests.post('https://api.notion.com/v1/pages', headers=headers, data=json.dumps(new_subject_data))
+            print(res.text)
             
             await ctx.respond(f'{new_subject} <{professor.name}> 과목이 개설되었습니다.')
         
@@ -85,15 +109,16 @@ class Admin(Cog):
                     
                 if len(list(filter(lambda x: x.name[-3:] == '교수님', professor.roles))) == 1:
                     await professor.remove_roles(get(ctx.guild.roles, name='교수님'))
-                    
-                category = get(ctx.guild.categories, name=f'{session.name[:-4]}')
                 
+                category = get(ctx.guild.categories, name=f'{session.name[:-4]}')
                 for channel in category.channels:
                     await channel.delete()
-                
                 await category.delete()
-                    
-                delete_subject(session.name[:-4])
+                
+                for page in get_db(database_id['subject']):
+                    if page['properties']['과목']['title'][0]['text']['content'] == session.name[:-4]:
+                        block_id = page['id']
+                requests.delete(f'https://api.notion.com/v1/blocks/{block_id}', headers=headers)
                     
                 await ctx.respond('해당 강의를 폐강하였습니다.')
 

@@ -31,28 +31,3 @@ def get_subject(database_id=database_id['subject']):
         subject.append(info['과목']['title'][0]['text']['content'])
     
     return subject
-
-def create_subject(new_subject, database_id=database_id['subject'], headers=headers):
-    # todo: create 파일에 있는 create_subject 옮기기 (왜 안 되는지는 모름)
-    pass
-
-def delete_subject(subject, database_id=database_id['subject'], headers=headers):
-    data = get_db(database_id)
-    
-    for page in data:
-        if page['properties']['과목']['title'][0]['text']['content'] == subject:
-            block_id = page['id']
-            
-    delete_url = f'https://api.notion.com/v1/blocks/{block_id}'
-    
-    requests.delete(delete_url, headers=headers)
-
-def get_professor_inform(database_id=database_id['professor']):
-    data = get_db(database_id)
-    
-    professor_introduction = dict()
-    
-    for info in list(map(lambda x: x['properties'], data)):
-        professor_introduction[info['학번']['title'][0]['text']['content']] = info['소개']['rich_text'][0]['text']['content']
-        
-    return professor_introduction

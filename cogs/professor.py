@@ -6,9 +6,10 @@ from discord.ui import Button, Select, View
 from discord.utils import get
 
 from etc.config import BotColor, BotVer
-from etc.db import get_subject
+from etc.db import *
 
 from datetime import datetime
+import requests, json
 
 class Professor(Cog):
     def __init__(self, bot):
@@ -63,6 +64,44 @@ class Professor(Cog):
             
         else:
             await ctx.respond('교수님이 가르치는 수강생이 아닙니다!')
+        
+    @slash_command(name='조교임용')
+    @has_role('교수님')
+    async def kidnap(self, ctx, assistant: Option(discord.Member, '납치할 조교', required=True), role: Option(discord.Role, '조교 역할', required=True)):
+        """조교를 납치합니다."""
+        
+        if role.name[-3:] != '조교님':
+            await ctx.respond('올바른 역할이 아닙니다!')
+        
+        else:
+            if not role.name[:-4] in map(lambda x: x.name[:-4], ctx.author.roles):
+                await ctx.respond('교수님이 담당하는 과목이 아닙니다!')
+            else:
+                await ctx.defer()
+                
+                await assistant.add_roles(role)
+                
+                for page in get_db(database_id['subject']):
+                    if page['properties']['과목']['title'][0]['text']['content'] == role.name[:-4]:
+                        assistant_id = page['properties']['조교님']['rich_text'][0]['text']['content'] + f'{assistant.id}\n'
+                        page_id = page['id'].replace('-', '')
+                
+                update_data = {
+                    "properties": {
+                        "조교님": {
+                            "rich_text": [
+                                {
+                                    "text": {
+                                        "content": assistant_id
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+                res = requests.patch(f'https://api.notion.com/v1/pages/{page_id}', headers=headers, data=json.dumps(update_data))
+                
+                await ctx.respond(f'{assistant.mention}, 너 납치된 거야.')
         
     @slash_command(name='출석체크')
     @has_role('교수님')

@@ -6,7 +6,9 @@ from discord.ui import Button, Select, View
 from discord.utils import get
 
 from etc.config import BotColor, BotVer
-from etc.db import  database_id, get_db, get_subject, get_professor_inform
+from etc.db import *
+
+import requests, json
 
 class General(Cog):
     def __init__(self, bot):
@@ -28,9 +30,14 @@ class General(Cog):
         await ctx.defer()
         
         professor = get(ctx.guild.roles, name='교수님').members
+        
+        professor_introduction = dict()
+        for info in list(map(lambda x: x['properties'], get_db(database_id['professor']))):
+            professor_introduction[info['학번']['title'][0]['text']['content']] = info['소개']['rich_text'][0]['text']['content']
+        
         introduce_embed = discord.Embed(title='교수 소개', description=f'교수님들의 한 줄 소개입니다.', color=BotColor)
         for member in professor:
-            introduce_embed.add_field(name=member.name, value=get_professor_inform()[str(member.id)], inline=False)
+            introduce_embed.add_field(name=member.name, value=professor_introduction[str(member.id)], inline=False)
         introduce_embed.set_footer(text=BotVer)
         
         await ctx.respond(embed=introduce_embed)

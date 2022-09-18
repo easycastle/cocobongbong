@@ -7,7 +7,7 @@ def readDatabase(databaseId, headers):
     res = requests.post(readUrl, headers=headers)
     print(res.text)
 
-    data = res.json()['results']
+    data = res.json()
     with open("./db.json", "w", encoding="utf8") as f:
         json.dump(data, f, ensure_ascii=False)
         

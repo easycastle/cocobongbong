@@ -11,13 +11,6 @@ headers = {
 }
         
 def create_subject(new_subject, professor_id, database_id=database_id, headers=headers):
-    read_url = f'https://api.notion.com/v1/databases/{database_id}/query'
-        
-    read_res = requests.post(read_url, headers=headers)
-    read_data = read_res.json()['results']
-    
-    subject_id = len(read_data)
-
     create_url = "https://api.notion.com/v1/pages"
 
     new_subject_data = {

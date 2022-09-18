@@ -1,728 +1,776 @@
-[
-  {
-    "object": "page",
-    "id": "6627fdb3-b984-4821-b3bf-9727e2d0cad0",
-    "created_time": "2022-09-16T15:14:00.000Z",
-    "last_edited_time": "2022-09-16T15:24:00.000Z",
-    "created_by": {
-      "object": "user",
-      "id": "908b4b59-adde-4e8e-9164-a6e587d82d99"
-    },
-    "last_edited_by": {
-      "object": "user",
-      "id": "908b4b59-adde-4e8e-9164-a6e587d82d99"
-    },
-    "cover": null,
-    "icon": null,
-    "parent": {
-      "type": "database_id",
-      "database_id": "5b51b804-b020-4c5b-adc3-1ebc69ec9bea"
-    },
-    "archived": false,
-    "properties": {
-      "교수님": {
-        "id": "FO%3E%40",
-        "type": "rich_text",
-        "rich_text": [
-          {
-            "type": "text",
-            "text": { "content": "550660367488122881", "link": null },
-            "annotations": {
-              "bold": false,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "default"
-            },
-            "plain_text": "550660367488122881",
-            "href": null
-          }
-        ]
+{
+  "object": "list",
+  "results": [
+    {
+      "object": "page",
+      "id": "6627fdb3-b984-4821-b3bf-9727e2d0cad0",
+      "created_time": "2022-09-16T15:14:00.000Z",
+      "last_edited_time": "2022-09-16T15:24:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "908b4b59-adde-4e8e-9164-a6e587d82d99"
       },
-      "조교님": { "id": "%5DwR%40", "type": "rich_text", "rich_text": [] },
-      "수강자": {
-        "id": "evGl",
-        "type": "rich_text",
-        "rich_text": [
-          {
-            "type": "text",
-            "text": {
-              "content": "532480614855868418\n1012964941797527653\n943404350246645772\n697471340898287657",
-              "link": null
-            },
-            "annotations": {
-              "bold": false,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "default"
-            },
-            "plain_text": "532480614855868418\n1012964941797527653\n943404350246645772\n697471340898287657",
-            "href": null
-          }
-        ]
+      "last_edited_by": {
+        "object": "user",
+        "id": "908b4b59-adde-4e8e-9164-a6e587d82d99"
       },
-      "과목": {
-        "id": "title",
-        "type": "title",
-        "title": [
-          {
-            "type": "text",
-            "text": { "content": "C_B <배병윤>", "link": null },
-            "annotations": {
-              "bold": false,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "default"
-            },
-            "plain_text": "C_B <배병윤>",
-            "href": null
-          }
-        ]
-      }
-    },
-    "url": "https://www.notion.so/C_B-6627fdb3b9844821b3bf9727e2d0cad0"
-  },
-  {
-    "object": "page",
-    "id": "85ae9df8-e949-412b-a016-b37ccc0dbd24",
-    "created_time": "2022-09-16T15:14:00.000Z",
-    "last_edited_time": "2022-09-16T15:23:00.000Z",
-    "created_by": {
-      "object": "user",
-      "id": "908b4b59-adde-4e8e-9164-a6e587d82d99"
-    },
-    "last_edited_by": {
-      "object": "user",
-      "id": "908b4b59-adde-4e8e-9164-a6e587d82d99"
-    },
-    "cover": null,
-    "icon": null,
-    "parent": {
-      "type": "database_id",
-      "database_id": "5b51b804-b020-4c5b-adc3-1ebc69ec9bea"
-    },
-    "archived": false,
-    "properties": {
-      "교수님": {
-        "id": "FO%3E%40",
-        "type": "rich_text",
-        "rich_text": [
-          {
-            "type": "text",
-            "text": { "content": "550660367488122881", "link": null },
-            "annotations": {
-              "bold": false,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "default"
-            },
-            "plain_text": "550660367488122881",
-            "href": null
-          }
-        ]
+      "cover": null,
+      "icon": null,
+      "parent": {
+        "type": "database_id",
+        "database_id": "5b51b804-b020-4c5b-adc3-1ebc69ec9bea"
       },
-      "조교님": { "id": "%5DwR%40", "type": "rich_text", "rich_text": [] },
-      "수강자": {
-        "id": "evGl",
-        "type": "rich_text",
-        "rich_text": [
-          {
-            "type": "text",
-            "text": {
-              "content": "960159146215374889\n432045612045828096\n279923676478963713\n928253380021846027",
-              "link": null
-            },
-            "annotations": {
-              "bold": false,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "default"
-            },
-            "plain_text": "960159146215374889\n432045612045828096\n279923676478963713\n928253380021846027",
-            "href": null
-          }
-        ]
+      "archived": false,
+      "properties": {
+        "교수님": {
+          "id": "FO%3E%40",
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "type": "text",
+              "text": { "content": "550660367488122881", "link": null },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "550660367488122881",
+              "href": null
+            }
+          ]
+        },
+        "조교님": { "id": "%5DwR%40", "type": "rich_text", "rich_text": [] },
+        "수강자": {
+          "id": "evGl",
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "type": "text",
+              "text": {
+                "content": "532480614855868418\n1012964941797527653\n943404350246645772\n697471340898287657",
+                "link": null
+              },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "532480614855868418\n1012964941797527653\n943404350246645772\n697471340898287657",
+              "href": null
+            }
+          ]
+        },
+        "과목": {
+          "id": "title",
+          "type": "title",
+          "title": [
+            {
+              "type": "text",
+              "text": { "content": "C_B <배병윤>", "link": null },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "C_B <배병윤>",
+              "href": null
+            }
+          ]
+        }
       },
-      "과목": {
-        "id": "title",
-        "type": "title",
-        "title": [
-          {
-            "type": "text",
-            "text": { "content": "C_A <배병윤>", "link": null },
-            "annotations": {
-              "bold": false,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "default"
-            },
-            "plain_text": "C_A <배병윤>",
-            "href": null
-          }
-        ]
-      }
+      "url": "https://www.notion.so/C_B-6627fdb3b9844821b3bf9727e2d0cad0"
     },
-    "url": "https://www.notion.so/C_A-85ae9df8e949412ba016b37ccc0dbd24"
-  },
-  {
-    "object": "page",
-    "id": "084fb490-cc58-4a46-88d5-321bb66cca9c",
-    "created_time": "2022-09-16T14:52:00.000Z",
-    "last_edited_time": "2022-09-17T04:29:00.000Z",
-    "created_by": {
-      "object": "user",
-      "id": "849d55b0-812d-49ca-a9e7-c671af96b0bd"
-    },
-    "last_edited_by": {
-      "object": "user",
-      "id": "908b4b59-adde-4e8e-9164-a6e587d82d99"
-    },
-    "cover": null,
-    "icon": null,
-    "parent": {
-      "type": "database_id",
-      "database_id": "5b51b804-b020-4c5b-adc3-1ebc69ec9bea"
-    },
-    "archived": false,
-    "properties": {
-      "교수님": {
-        "id": "FO%3E%40",
-        "type": "rich_text",
-        "rich_text": [
-          {
-            "type": "text",
-            "text": { "content": "942042864823717898", "link": null },
-            "annotations": {
-              "bold": false,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "default"
-            },
-            "plain_text": "942042864823717898",
-            "href": null
-          }
-        ]
+    {
+      "object": "page",
+      "id": "85ae9df8-e949-412b-a016-b37ccc0dbd24",
+      "created_time": "2022-09-16T15:14:00.000Z",
+      "last_edited_time": "2022-09-16T15:23:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "908b4b59-adde-4e8e-9164-a6e587d82d99"
       },
-      "조교님": { "id": "%5DwR%40", "type": "rich_text", "rich_text": [] },
-      "수강자": {
-        "id": "evGl",
-        "type": "rich_text",
-        "rich_text": [
-          {
-            "type": "text",
-            "text": {
-              "content": "362165659490189313\n984785176469045288\n371246700377145345\n511515493610553344\n648473116548399123\n454849303517593604\n1017064462777323662\n697471340898287657\n537815166297833482",
-              "link": null
-            },
-            "annotations": {
-              "bold": false,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "default"
-            },
-            "plain_text": "362165659490189313\n984785176469045288\n371246700377145345\n511515493610553344\n648473116548399123\n454849303517593604\n1017064462777323662\n697471340898287657\n537815166297833482",
-            "href": null
-          }
-        ]
+      "last_edited_by": {
+        "object": "user",
+        "id": "908b4b59-adde-4e8e-9164-a6e587d82d99"
       },
-      "과목": {
-        "id": "title",
-        "type": "title",
-        "title": [
-          {
-            "type": "text",
-            "text": { "content": "WEB <이현우>", "link": null },
-            "annotations": {
-              "bold": false,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "default"
-            },
-            "plain_text": "WEB <이현우>",
-            "href": null
-          }
-        ]
-      }
-    },
-    "url": "https://www.notion.so/WEB-084fb490cc584a4688d5321bb66cca9c"
-  },
-  {
-    "object": "page",
-    "id": "2b4b6eee-2bb2-44a3-b709-e4e074634147",
-    "created_time": "2022-08-30T18:23:00.000Z",
-    "last_edited_time": "2022-09-16T15:25:00.000Z",
-    "created_by": {
-      "object": "user",
-      "id": "908b4b59-adde-4e8e-9164-a6e587d82d99"
-    },
-    "last_edited_by": {
-      "object": "user",
-      "id": "908b4b59-adde-4e8e-9164-a6e587d82d99"
-    },
-    "cover": null,
-    "icon": null,
-    "parent": {
-      "type": "database_id",
-      "database_id": "5b51b804-b020-4c5b-adc3-1ebc69ec9bea"
-    },
-    "archived": false,
-    "properties": {
-      "교수님": {
-        "id": "FO%3E%40",
-        "type": "rich_text",
-        "rich_text": [
-          {
-            "type": "text",
-            "text": { "content": "439817891240607746", "link": null },
-            "annotations": {
-              "bold": false,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "default"
-            },
-            "plain_text": "439817891240607746",
-            "href": null
-          }
-        ]
+      "cover": null,
+      "icon": null,
+      "parent": {
+        "type": "database_id",
+        "database_id": "5b51b804-b020-4c5b-adc3-1ebc69ec9bea"
       },
-      "조교님": { "id": "%5DwR%40", "type": "rich_text", "rich_text": [] },
-      "수강자": {
-        "id": "evGl",
-        "type": "rich_text",
-        "rich_text": [
-          {
-            "type": "text",
-            "text": {
-              "content": "787149199757279254\n984785176469045288\n532480614855868418\n371246700377145345\n511515493610553344\n648473116548399123\n948903553039224832\n396851933044015104\n485665339779317770\n697471340898287657",
-              "link": null
-            },
-            "annotations": {
-              "bold": false,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "default"
-            },
-            "plain_text": "787149199757279254\n984785176469045288\n532480614855868418\n371246700377145345\n511515493610553344\n648473116548399123\n948903553039224832\n396851933044015104\n485665339779317770\n697471340898287657",
-            "href": null
-          }
-        ]
+      "archived": false,
+      "properties": {
+        "교수님": {
+          "id": "FO%3E%40",
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "type": "text",
+              "text": { "content": "550660367488122881", "link": null },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "550660367488122881",
+              "href": null
+            }
+          ]
+        },
+        "조교님": { "id": "%5DwR%40", "type": "rich_text", "rich_text": [] },
+        "수강자": {
+          "id": "evGl",
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "type": "text",
+              "text": {
+                "content": "960159146215374889\n432045612045828096\n279923676478963713\n928253380021846027",
+                "link": null
+              },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "960159146215374889\n432045612045828096\n279923676478963713\n928253380021846027",
+              "href": null
+            }
+          ]
+        },
+        "과목": {
+          "id": "title",
+          "type": "title",
+          "title": [
+            {
+              "type": "text",
+              "text": { "content": "C_A <배병윤>", "link": null },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "C_A <배병윤>",
+              "href": null
+            }
+          ]
+        }
       },
-      "과목": {
-        "id": "title",
-        "type": "title",
-        "title": [
-          {
-            "type": "text",
-            "text": { "content": "JAVA <이지성>", "link": null },
-            "annotations": {
-              "bold": false,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "default"
-            },
-            "plain_text": "JAVA <이지성>",
-            "href": null
-          }
-        ]
-      }
+      "url": "https://www.notion.so/C_A-85ae9df8e949412ba016b37ccc0dbd24"
     },
-    "url": "https://www.notion.so/JAVA-2b4b6eee2bb244a3b709e4e074634147"
-  },
-  {
-    "object": "page",
-    "id": "c610a807-ae8a-4ff2-b3a7-b6821f434299",
-    "created_time": "2022-08-30T18:22:00.000Z",
-    "last_edited_time": "2022-09-17T04:29:00.000Z",
-    "created_by": {
-      "object": "user",
-      "id": "908b4b59-adde-4e8e-9164-a6e587d82d99"
-    },
-    "last_edited_by": {
-      "object": "user",
-      "id": "908b4b59-adde-4e8e-9164-a6e587d82d99"
-    },
-    "cover": null,
-    "icon": null,
-    "parent": {
-      "type": "database_id",
-      "database_id": "5b51b804-b020-4c5b-adc3-1ebc69ec9bea"
-    },
-    "archived": false,
-    "properties": {
-      "교수님": {
-        "id": "FO%3E%40",
-        "type": "rich_text",
-        "rich_text": [
-          {
-            "type": "text",
-            "text": { "content": "411066423025336320", "link": null },
-            "annotations": {
-              "bold": false,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "default"
-            },
-            "plain_text": "411066423025336320",
-            "href": null
-          }
-        ]
+    {
+      "object": "page",
+      "id": "084fb490-cc58-4a46-88d5-321bb66cca9c",
+      "created_time": "2022-09-16T14:52:00.000Z",
+      "last_edited_time": "2022-09-17T04:29:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "849d55b0-812d-49ca-a9e7-c671af96b0bd"
       },
-      "조교님": { "id": "%5DwR%40", "type": "rich_text", "rich_text": [] },
-      "수강자": { "id": "evGl", "type": "rich_text", "rich_text": [] },
-      "과목": {
-        "id": "title",
-        "type": "title",
-        "title": [
-          {
-            "type": "text",
-            "text": { "content": "FrontEnd <신찬규>", "link": null },
-            "annotations": {
-              "bold": false,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "default"
-            },
-            "plain_text": "FrontEnd <신찬규>",
-            "href": null
-          }
-        ]
-      }
-    },
-    "url": "https://www.notion.so/FrontEnd-c610a807ae8a4ff2b3a7b6821f434299"
-  },
-  {
-    "object": "page",
-    "id": "4957d338-6796-448a-8ca6-bf1a83f6504f",
-    "created_time": "2022-08-30T18:21:00.000Z",
-    "last_edited_time": "2022-09-16T15:23:00.000Z",
-    "created_by": {
-      "object": "user",
-      "id": "908b4b59-adde-4e8e-9164-a6e587d82d99"
-    },
-    "last_edited_by": {
-      "object": "user",
-      "id": "908b4b59-adde-4e8e-9164-a6e587d82d99"
-    },
-    "cover": null,
-    "icon": null,
-    "parent": {
-      "type": "database_id",
-      "database_id": "5b51b804-b020-4c5b-adc3-1ebc69ec9bea"
-    },
-    "archived": false,
-    "properties": {
-      "교수님": {
-        "id": "FO%3E%40",
-        "type": "rich_text",
-        "rich_text": [
-          {
-            "type": "text",
-            "text": { "content": "942042864823717898", "link": null },
-            "annotations": {
-              "bold": false,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "default"
-            },
-            "plain_text": "942042864823717898",
-            "href": null
-          }
-        ]
+      "last_edited_by": {
+        "object": "user",
+        "id": "908b4b59-adde-4e8e-9164-a6e587d82d99"
       },
-      "조교님": {
-        "id": "%5DwR%40",
-        "type": "rich_text",
-        "rich_text": [
-          {
-            "type": "text",
-            "text": {
-              "content": "364226674893651969\n439817891240607746\n923562992300326953",
-              "link": null
-            },
-            "annotations": {
-              "bold": false,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "default"
-            },
-            "plain_text": "364226674893651969\n439817891240607746\n923562992300326953",
-            "href": null
-          }
-        ]
+      "cover": null,
+      "icon": null,
+      "parent": {
+        "type": "database_id",
+        "database_id": "5b51b804-b020-4c5b-adc3-1ebc69ec9bea"
       },
-      "수강자": {
-        "id": "evGl",
-        "type": "rich_text",
-        "rich_text": [
-          {
-            "type": "text",
-            "text": {
-              "content": "362165659490189313\n787149199757279254\n984785176469045288\n532480614855868418\n961285066774962190\n371246700377145345\n648473116548399123\n948903553039224832\n1017064462777323662\n1004039382640107640\n697471340898287657\n537815166297833482\n395182450126356502\n995209225611513860",
-              "link": null
-            },
-            "annotations": {
-              "bold": false,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "default"
-            },
-            "plain_text": "362165659490189313\n787149199757279254\n984785176469045288\n532480614855868418\n961285066774962190\n371246700377145345\n648473116548399123\n948903553039224832\n1017064462777323662\n1004039382640107640\n697471340898287657\n537815166297833482\n395182450126356502\n995209225611513860",
-            "href": null
-          }
-        ]
+      "archived": false,
+      "properties": {
+        "교수님": {
+          "id": "FO%3E%40",
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "type": "text",
+              "text": { "content": "942042864823717898", "link": null },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "942042864823717898",
+              "href": null
+            }
+          ]
+        },
+        "조교님": { "id": "%5DwR%40", "type": "rich_text", "rich_text": [] },
+        "수강자": {
+          "id": "evGl",
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "type": "text",
+              "text": {
+                "content": "362165659490189313\n984785176469045288\n371246700377145345\n511515493610553344\n648473116548399123\n454849303517593604\n1017064462777323662\n697471340898287657\n537815166297833482",
+                "link": null
+              },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "362165659490189313\n984785176469045288\n371246700377145345\n511515493610553344\n648473116548399123\n454849303517593604\n1017064462777323662\n697471340898287657\n537815166297833482",
+              "href": null
+            }
+          ]
+        },
+        "과목": {
+          "id": "title",
+          "type": "title",
+          "title": [
+            {
+              "type": "text",
+              "text": { "content": "WEB <이현우>", "link": null },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "WEB <이현우>",
+              "href": null
+            }
+          ]
+        }
       },
-      "과목": {
-        "id": "title",
-        "type": "title",
-        "title": [
-          {
-            "type": "text",
-            "text": { "content": "C <이현우>", "link": null },
-            "annotations": {
-              "bold": false,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "default"
-            },
-            "plain_text": "C <이현우>",
-            "href": null
-          }
-        ]
-      }
+      "url": "https://www.notion.so/WEB-084fb490cc584a4688d5321bb66cca9c"
     },
-    "url": "https://www.notion.so/C-4957d3386796448a8ca6bf1a83f6504f"
-  },
-  {
-    "object": "page",
-    "id": "5177219c-64ee-41d4-bfa0-5878c23a8321",
-    "created_time": "2022-08-30T17:30:00.000Z",
-    "last_edited_time": "2022-09-17T04:29:00.000Z",
-    "created_by": {
-      "object": "user",
-      "id": "908b4b59-adde-4e8e-9164-a6e587d82d99"
-    },
-    "last_edited_by": {
-      "object": "user",
-      "id": "908b4b59-adde-4e8e-9164-a6e587d82d99"
-    },
-    "cover": null,
-    "icon": null,
-    "parent": {
-      "type": "database_id",
-      "database_id": "5b51b804-b020-4c5b-adc3-1ebc69ec9bea"
-    },
-    "archived": false,
-    "properties": {
-      "교수님": {
-        "id": "FO%3E%40",
-        "type": "rich_text",
-        "rich_text": [
-          {
-            "type": "text",
-            "text": { "content": "798223945600991265", "link": null },
-            "annotations": {
-              "bold": false,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "default"
-            },
-            "plain_text": "798223945600991265",
-            "href": null
-          }
-        ]
+    {
+      "object": "page",
+      "id": "2b4b6eee-2bb2-44a3-b709-e4e074634147",
+      "created_time": "2022-08-30T18:23:00.000Z",
+      "last_edited_time": "2022-09-18T20:33:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "908b4b59-adde-4e8e-9164-a6e587d82d99"
       },
-      "조교님": { "id": "%5DwR%40", "type": "rich_text", "rich_text": [] },
-      "수강자": { "id": "evGl", "type": "rich_text", "rich_text": [] },
-      "과목": {
-        "id": "title",
-        "type": "title",
-        "title": [
-          {
-            "type": "text",
-            "text": { "content": "BackEnd <이현서>", "link": null },
-            "annotations": {
-              "bold": false,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "default"
-            },
-            "plain_text": "BackEnd <이현서>",
-            "href": null
-          }
-        ]
-      }
-    },
-    "url": "https://www.notion.so/BackEnd-5177219c64ee41d4bfa05878c23a8321"
-  },
-  {
-    "object": "page",
-    "id": "788c4502-da2c-4720-9ebb-e6e43cac7ed6",
-    "created_time": "2022-08-30T17:30:00.000Z",
-    "last_edited_time": "2022-09-16T15:24:00.000Z",
-    "created_by": {
-      "object": "user",
-      "id": "908b4b59-adde-4e8e-9164-a6e587d82d99"
-    },
-    "last_edited_by": {
-      "object": "user",
-      "id": "908b4b59-adde-4e8e-9164-a6e587d82d99"
-    },
-    "cover": null,
-    "icon": null,
-    "parent": {
-      "type": "database_id",
-      "database_id": "5b51b804-b020-4c5b-adc3-1ebc69ec9bea"
-    },
-    "archived": false,
-    "properties": {
-      "교수님": {
-        "id": "FO%3E%40",
-        "type": "rich_text",
-        "rich_text": [
-          {
-            "type": "text",
-            "text": { "content": "439817891240607746", "link": null },
-            "annotations": {
-              "bold": false,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "default"
-            },
-            "plain_text": "439817891240607746",
-            "href": null
-          }
-        ]
+      "last_edited_by": {
+        "object": "user",
+        "id": "908b4b59-adde-4e8e-9164-a6e587d82d99"
       },
-      "조교님": { "id": "%5DwR%40", "type": "rich_text", "rich_text": [] },
-      "수강자": { "id": "evGl", "type": "rich_text", "rich_text": [] },
-      "과목": {
-        "id": "title",
-        "type": "title",
-        "title": [
-          {
-            "type": "text",
-            "text": { "content": "Python <이지성>", "link": null },
-            "annotations": {
-              "bold": false,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "default"
-            },
-            "plain_text": "Python <이지성>",
-            "href": null
-          }
-        ]
-      }
-    },
-    "url": "https://www.notion.so/Python-788c4502da2c47209ebbe6e43cac7ed6"
-  },
-  {
-    "object": "page",
-    "id": "c0715724-4054-4112-adef-66381b97dcb8",
-    "created_time": "2022-08-30T17:30:00.000Z",
-    "last_edited_time": "2022-09-17T04:29:00.000Z",
-    "created_by": {
-      "object": "user",
-      "id": "908b4b59-adde-4e8e-9164-a6e587d82d99"
-    },
-    "last_edited_by": {
-      "object": "user",
-      "id": "908b4b59-adde-4e8e-9164-a6e587d82d99"
-    },
-    "cover": null,
-    "icon": null,
-    "parent": {
-      "type": "database_id",
-      "database_id": "5b51b804-b020-4c5b-adc3-1ebc69ec9bea"
-    },
-    "archived": false,
-    "properties": {
-      "교수님": {
-        "id": "FO%3E%40",
-        "type": "rich_text",
-        "rich_text": [
-          {
-            "type": "text",
-            "text": { "content": "411066423025336320", "link": null },
-            "annotations": {
-              "bold": false,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "default"
-            },
-            "plain_text": "411066423025336320",
-            "href": null
-          }
-        ]
+      "cover": null,
+      "icon": null,
+      "parent": {
+        "type": "database_id",
+        "database_id": "5b51b804-b020-4c5b-adc3-1ebc69ec9bea"
       },
-      "조교님": { "id": "%5DwR%40", "type": "rich_text", "rich_text": [] },
-      "수강자": { "id": "evGl", "type": "rich_text", "rich_text": [] },
-      "과목": {
-        "id": "title",
-        "type": "title",
-        "title": [
-          {
-            "type": "text",
-            "text": { "content": "JS/TS <신찬규>", "link": null },
-            "annotations": {
-              "bold": false,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "default"
-            },
-            "plain_text": "JS/TS <신찬규>",
-            "href": null
-          }
-        ]
-      }
+      "archived": false,
+      "properties": {
+        "교수님": {
+          "id": "FO%3E%40",
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "type": "text",
+              "text": { "content": "439817891240607746", "link": null },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "439817891240607746",
+              "href": null
+            }
+          ]
+        },
+        "조교님": { "id": "%5DwR%40", "type": "rich_text", "rich_text": [] },
+        "수강자": {
+          "id": "evGl",
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "type": "text",
+              "text": {
+                "content": "787149199757279254\n984785176469045288\n532480614855868418\n371246700377145345\n511515493610553344\n648473116548399123\n948903553039224832\n396851933044015104\n485665339779317770\n697471340898287657",
+                "link": null
+              },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "787149199757279254\n984785176469045288\n532480614855868418\n371246700377145345\n511515493610553344\n648473116548399123\n948903553039224832\n396851933044015104\n485665339779317770\n697471340898287657",
+              "href": null
+            }
+          ]
+        },
+        "과목": {
+          "id": "title",
+          "type": "title",
+          "title": [
+            {
+              "type": "text",
+              "text": { "content": "JAVA <이지성(코코조용)>", "link": null },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "JAVA <이지성(코코조용)>",
+              "href": null
+            }
+          ]
+        }
+      },
+      "url": "https://www.notion.so/JAVA-2b4b6eee2bb244a3b709e4e074634147"
     },
-    "url": "https://www.notion.so/JS-TS-c071572440544112adef66381b97dcb8"
-  }
-]
+    {
+      "object": "page",
+      "id": "c610a807-ae8a-4ff2-b3a7-b6821f434299",
+      "created_time": "2022-08-30T18:22:00.000Z",
+      "last_edited_time": "2022-09-17T04:29:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "908b4b59-adde-4e8e-9164-a6e587d82d99"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "908b4b59-adde-4e8e-9164-a6e587d82d99"
+      },
+      "cover": null,
+      "icon": null,
+      "parent": {
+        "type": "database_id",
+        "database_id": "5b51b804-b020-4c5b-adc3-1ebc69ec9bea"
+      },
+      "archived": false,
+      "properties": {
+        "교수님": {
+          "id": "FO%3E%40",
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "type": "text",
+              "text": { "content": "411066423025336320", "link": null },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "411066423025336320",
+              "href": null
+            }
+          ]
+        },
+        "조교님": { "id": "%5DwR%40", "type": "rich_text", "rich_text": [] },
+        "수강자": { "id": "evGl", "type": "rich_text", "rich_text": [] },
+        "과목": {
+          "id": "title",
+          "type": "title",
+          "title": [
+            {
+              "type": "text",
+              "text": { "content": "FrontEnd <신찬규>", "link": null },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "FrontEnd <신찬규>",
+              "href": null
+            }
+          ]
+        }
+      },
+      "url": "https://www.notion.so/FrontEnd-c610a807ae8a4ff2b3a7b6821f434299"
+    },
+    {
+      "object": "page",
+      "id": "4957d338-6796-448a-8ca6-bf1a83f6504f",
+      "created_time": "2022-08-30T18:21:00.000Z",
+      "last_edited_time": "2022-09-16T15:23:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "908b4b59-adde-4e8e-9164-a6e587d82d99"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "908b4b59-adde-4e8e-9164-a6e587d82d99"
+      },
+      "cover": null,
+      "icon": null,
+      "parent": {
+        "type": "database_id",
+        "database_id": "5b51b804-b020-4c5b-adc3-1ebc69ec9bea"
+      },
+      "archived": false,
+      "properties": {
+        "교수님": {
+          "id": "FO%3E%40",
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "type": "text",
+              "text": { "content": "942042864823717898", "link": null },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "942042864823717898",
+              "href": null
+            }
+          ]
+        },
+        "조교님": {
+          "id": "%5DwR%40",
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "type": "text",
+              "text": {
+                "content": "364226674893651969\n439817891240607746\n923562992300326953",
+                "link": null
+              },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "364226674893651969\n439817891240607746\n923562992300326953",
+              "href": null
+            }
+          ]
+        },
+        "수강자": {
+          "id": "evGl",
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "type": "text",
+              "text": {
+                "content": "362165659490189313\n787149199757279254\n984785176469045288\n532480614855868418\n961285066774962190\n371246700377145345\n648473116548399123\n948903553039224832\n1017064462777323662\n1004039382640107640\n697471340898287657\n537815166297833482\n395182450126356502\n995209225611513860",
+                "link": null
+              },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "362165659490189313\n787149199757279254\n984785176469045288\n532480614855868418\n961285066774962190\n371246700377145345\n648473116548399123\n948903553039224832\n1017064462777323662\n1004039382640107640\n697471340898287657\n537815166297833482\n395182450126356502\n995209225611513860",
+              "href": null
+            }
+          ]
+        },
+        "과목": {
+          "id": "title",
+          "type": "title",
+          "title": [
+            {
+              "type": "text",
+              "text": { "content": "C <이현우>", "link": null },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "C <이현우>",
+              "href": null
+            }
+          ]
+        }
+      },
+      "url": "https://www.notion.so/C-4957d3386796448a8ca6bf1a83f6504f"
+    },
+    {
+      "object": "page",
+      "id": "5177219c-64ee-41d4-bfa0-5878c23a8321",
+      "created_time": "2022-08-30T17:30:00.000Z",
+      "last_edited_time": "2022-09-17T04:29:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "908b4b59-adde-4e8e-9164-a6e587d82d99"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "908b4b59-adde-4e8e-9164-a6e587d82d99"
+      },
+      "cover": null,
+      "icon": null,
+      "parent": {
+        "type": "database_id",
+        "database_id": "5b51b804-b020-4c5b-adc3-1ebc69ec9bea"
+      },
+      "archived": false,
+      "properties": {
+        "교수님": {
+          "id": "FO%3E%40",
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "type": "text",
+              "text": { "content": "798223945600991265", "link": null },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "798223945600991265",
+              "href": null
+            }
+          ]
+        },
+        "조교님": { "id": "%5DwR%40", "type": "rich_text", "rich_text": [] },
+        "수강자": { "id": "evGl", "type": "rich_text", "rich_text": [] },
+        "과목": {
+          "id": "title",
+          "type": "title",
+          "title": [
+            {
+              "type": "text",
+              "text": { "content": "BackEnd <이현서>", "link": null },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "BackEnd <이현서>",
+              "href": null
+            }
+          ]
+        }
+      },
+      "url": "https://www.notion.so/BackEnd-5177219c64ee41d4bfa05878c23a8321"
+    },
+    {
+      "object": "page",
+      "id": "788c4502-da2c-4720-9ebb-e6e43cac7ed6",
+      "created_time": "2022-08-30T17:30:00.000Z",
+      "last_edited_time": "2022-09-18T20:55:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "908b4b59-adde-4e8e-9164-a6e587d82d99"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "849d55b0-812d-49ca-a9e7-c671af96b0bd"
+      },
+      "cover": null,
+      "icon": null,
+      "parent": {
+        "type": "database_id",
+        "database_id": "5b51b804-b020-4c5b-adc3-1ebc69ec9bea"
+      },
+      "archived": false,
+      "properties": {
+        "교수님": {
+          "id": "FO%3E%40",
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "type": "text",
+              "text": { "content": "439817891240607746", "link": null },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "439817891240607746",
+              "href": null
+            }
+          ]
+        },
+        "조교님": {
+          "id": "%5DwR%40",
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "type": "text",
+              "text": { "content": "asdf", "link": null },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "asdf",
+              "href": null
+            }
+          ]
+        },
+        "수강자": {
+          "id": "evGl",
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "type": "text",
+              "text": {
+                "content": "824214936179834881\n392909940705984532\n371246700377145345\n571356111656058880\n1012964941797527653\n364226674893651969\n364397834012983296\n790920715498815498\n796753812270088192\n1012730290864660632",
+                "link": null
+              },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "824214936179834881\n392909940705984532\n371246700377145345\n571356111656058880\n1012964941797527653\n364226674893651969\n364397834012983296\n790920715498815498\n796753812270088192\n1012730290864660632",
+              "href": null
+            }
+          ]
+        },
+        "과목": {
+          "id": "title",
+          "type": "title",
+          "title": [
+            {
+              "type": "text",
+              "text": { "content": "Python <이지성(코코조용)>", "link": null },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "Python <이지성(코코조용)>",
+              "href": null
+            }
+          ]
+        }
+      },
+      "url": "https://www.notion.so/Python-788c4502da2c47209ebbe6e43cac7ed6"
+    },
+    {
+      "object": "page",
+      "id": "c0715724-4054-4112-adef-66381b97dcb8",
+      "created_time": "2022-08-30T17:30:00.000Z",
+      "last_edited_time": "2022-09-17T04:29:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "908b4b59-adde-4e8e-9164-a6e587d82d99"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "908b4b59-adde-4e8e-9164-a6e587d82d99"
+      },
+      "cover": null,
+      "icon": null,
+      "parent": {
+        "type": "database_id",
+        "database_id": "5b51b804-b020-4c5b-adc3-1ebc69ec9bea"
+      },
+      "archived": false,
+      "properties": {
+        "교수님": {
+          "id": "FO%3E%40",
+          "type": "rich_text",
+          "rich_text": [
+            {
+              "type": "text",
+              "text": { "content": "411066423025336320", "link": null },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "411066423025336320",
+              "href": null
+            }
+          ]
+        },
+        "조교님": { "id": "%5DwR%40", "type": "rich_text", "rich_text": [] },
+        "수강자": { "id": "evGl", "type": "rich_text", "rich_text": [] },
+        "과목": {
+          "id": "title",
+          "type": "title",
+          "title": [
+            {
+              "type": "text",
+              "text": { "content": "JS/TS <신찬규>", "link": null },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "JS/TS <신찬규>",
+              "href": null
+            }
+          ]
+        }
+      },
+      "url": "https://www.notion.so/JS-TS-c071572440544112adef66381b97dcb8"
+    }
+  ],
+  "next_cursor": null,
+  "has_more": false,
+  "type": "page",
+  "page": {}
+}
