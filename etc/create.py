@@ -10,7 +10,7 @@ headers = {
     "Notion-Version": "2022-02-22"
 }
         
-def create_subject(new_subject, database_id=database_id, headers=headers):
+def create_subject(new_subject, professor_id, database_id=database_id, headers=headers):
     read_url = f'https://api.notion.com/v1/databases/{database_id}/query'
         
     read_res = requests.post(read_url, headers=headers)
@@ -32,9 +32,15 @@ def create_subject(new_subject, database_id=database_id, headers=headers):
                     }
                 ]
             }, 
-            "과목번호": {
-                "number": subject_id
-            }
+            "교수님": {
+                "rich_text": [
+                    {
+                        "text": {
+                            "content": professor_id
+                        }
+                    }
+                ]
+            }, 
         }
     }
     data = json.dumps(new_subject_data)

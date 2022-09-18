@@ -11,9 +11,9 @@ def readDatabase(databaseId, headers):
     with open("./db.json", "w", encoding="utf8") as f:
         json.dump(data, f, ensure_ascii=False)
         
-token = "secret_VNFjX2dIU8pYvRT9Mdgax09UPWrN4Z6qBMWb7ANtHFq"
+token = "secret_KqzDNQ5Ieq9mbswQCvhQyxYj9h8g7OQVctziq5im1JU"
 
-databaseId = "82fe41190f4041979003f40c2adc4797"
+databaseId = "5b51b804b0204c5badc31ebc69ec9bea"
 
 headers = {
     "Authorization": "Bearer " + token,

@@ -6,8 +6,8 @@ from discord.ui import Select, View
 from discord.utils import get
 
 from etc.config import BotColor, BotVer
+from etc.db import delete_subject
 from etc.session_option import basic_permission, professor_overwrite, student_overwrite
-from etc.db import database_id, token, headers, get_subject
 from etc.create import create_subject
 from etc.log_translation import translateLog
 
@@ -20,7 +20,7 @@ class Admin(Cog):
 
     @slash_command(name='개설', guild_ids=[1012586500006875139])
     @has_role('관리자')
-    async def open_session(self, ctx, new_subject: Option(str, '강의실 이름', required=True), color: Option(str, '역할 색상', required=True)):
+    async def open_session(self, ctx, new_subject: Option(str, '강의명', required=True), professor: Option(discord.Member, '담당 교수', required=True), color: Option(str, '역할 색상', required=True)):
         """원하는 주제의 강의실을 개설합니다."""
         
         if ' ' in new_subject:
@@ -28,19 +28,19 @@ class Admin(Cog):
         else:
             await ctx.defer()
             
-            subject = get_subject()
-            professor_role = await ctx.guild.create_role(name=f'{new_subject} 교수님', permissions=basic_permission, color=int(f'0x{color}', 16))
-            student_role = await ctx.guild.create_role(name=f'{new_subject} 수강자', permissions=basic_permission, color=int(f'0x{color}', 16))
+            subject_professor_role = await ctx.guild.create_role(name=f'{new_subject} <{professor.name}> 교수님', permissions=basic_permission, color=int(f'0x{color}', 16))
+            subject_assistant_role = await ctx.guild.create_role(name=f'{new_subject} <{professor.name}> 조교님', permissions=basic_permission, color=int(f'0x{color}', 16))
+            subject_student_role = await ctx.guild.create_role(name=f'{new_subject} <{professor.name}> 수강생', permissions=basic_permission, color=int(f'0x{color}', 16))
             
-            prev_professor_position = get(ctx.guild.roles, name=f'{subject[-1]} 교수님').position
-            await professor_role.edit(position=prev_professor_position-1)
-            prev_student_position = get(ctx.guild.roles, name=f'{subject[-1]} 수강자').position
-            await student_role.edit(position=prev_student_position-1)
+            assistant_position = get(ctx.guild.roles, name='조교님').position
+            await subject_professor_role.edit(position=assistant_position+1)
+            student_position = get(ctx.guild.roles, name='수강생').position
+            await subject_assistant_role.edit(position=student_position+1)
             
-            category = await ctx.guild.create_category(name=new_subject, position=len(ctx.guild.categories))
+            category = await ctx.guild.create_category(name=f'{new_subject} <{professor.name}>', position=len(ctx.guild.categories))
             await category.set_permissions(get(ctx.guild.roles, name='@everyone'), view_channel=False, connect=False)
-            await category.set_permissions(professor_role, overwrite=professor_overwrite)
-            await category.set_permissions(student_role, overwrite=student_overwrite)
+            await category.set_permissions(subject_professor_role, overwrite=professor_overwrite)
+            await category.set_permissions(subject_student_role, overwrite=student_overwrite)
             
             announcement = await category.create_text_channel('📢공지')
             studying = await category.create_text_channel('📝공부방')
@@ -58,30 +58,44 @@ class Admin(Cog):
             await assignment.edit(sync_permissions=True)
             await classroom.edit(sync_permissions=True)
             
-            create_subject(new_subject)
+            create_subject(f'{new_subject} <{professor.name}>', str(professor.id))
             
-            await ctx.respond(f'{new_subject} 과목이 개설되었습니다.')
-
-    @slash_command(name='교수임용')
+            professor_role = get(ctx.guild.roles, name='교수님')
+        
+            await professor.add_roles(professor_role, subject_professor_role)
+            
+            await ctx.respond(f'{new_subject} <{professor.name}> 과목이 개설되었습니다.')
+        
+    @slash_command(name='폐강')
     @has_role('관리자')
-    async def hire_professor(self, ctx, who: Option(discord.Member, '임용할 스터디원', required=True), subject: Option(str, '과목', choices=get_subject(), required=True)):
-        """해당 스터디원을 교수로 임용합니다."""
+    async def close_session(self, ctx, session: Option(discord.Role, '폐강할 강의 역할', required=True), professor: Option(discord.Member, '담당 교수 이름', required=True)):
+        """해당 강의를 폐강합니다."""
         
-        professor_role = get(ctx.guild.roles, name='교수님')
-        subject_role = get(ctx.guild.roles, name=f'{subject} 교수님')
-        
-        await who.add_roles(professor_role, subject_role)
-        await ctx.respond(f'{who.mention}님이 {subject} 과목을 가르칠 교수님으로 임용되었습니다.')
-        
-    @slash_command(name='교수파면')
-    @has_role('관리자')
-    async def dismiss_professor(self, ctx, who: Option(discord.Member, '파면시킬 교수', required=True), subject: Option(str, '과목', choices=get_subject(), required=True)):
-        """해당 교수님을 파면합니다."""
-        
-        subject_role = get(ctx.guild.roles, name=f'{subject} 교수님')
-        
-        await who.remove_roles(subject_role)
-        await ctx.respond(f'{who.mention}님은 {subject} 과목의 교수직에서 파면되었습니다.')
+        if not '교수님' in session.name:
+            ctx.respoond('알맞은 역할이 아닙니다!')
+        else:
+            if not session.name in map(lambda x: x.name, professor.roles):
+                await ctx.respond('폐강할 강의의 담당 교수님이 아닙니다!')
+            else:
+                await ctx.defer()
+                
+                for name in ['교수님', '조교님', '수강생']:
+                    role = get(ctx.guild.roles, name=f'{session.name[:-3]}{name}')
+                    await role.delete()
+                    
+                if len(list(filter(lambda x: x.name[-3:] == '교수님', professor.roles))) == 1:
+                    await professor.remove_roles(get(ctx.guild.roles, name='교수님'))
+                    
+                category = get(ctx.guild.categories, name=f'{session.name[:-4]}')
+                
+                for channel in category.channels:
+                    await channel.delete()
+                
+                await category.delete()
+                    
+                delete_subject(session.name[:-4])
+                    
+                await ctx.respond('해당 강의를 폐강하였습니다.')
 
     @slash_command()
     @has_permissions(administrator=True)
@@ -321,14 +335,11 @@ class Admin(Cog):
             
     @slash_command(name='복구', guild_ids=[1012586500006875139])
     @has_role('관리자')
-    async def recover(self, ctx, content: Option(str, '복구할 내용', required=True)):
+    async def recover(self, ctx):
         """손실된 DB를 복구합니다."""
         
-        recover_embed = discord.Embed(title='복구 임베드', description=content, color=BotColor)
-        recover_embed.set_footer(text=BotVer)
-        
-        await ctx.send(embed=recover_embed)
-        await ctx.delete()
+        await ctx.guild.create_role(name='테스트', color=int(f'0x{color}', 16))
+        await ctx.respond(f'test')
         
 def setup(bot):
     bot.add_cog(Admin(bot))

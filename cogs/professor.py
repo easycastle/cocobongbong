@@ -14,12 +14,12 @@ class Professor(Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @slash_command(name='수강자명단')
+    @slash_command(name='수강생명단')
     @has_role('교수님')
     async def check_students(self, ctx, student_role: Option(discord.Role, '조회할 학생', required=True)):    
-        """교수님에게 배울 수강자 명단을 보여줍니다."""
+        """교수님에게 배울 수강생 명단을 보여줍니다."""
         
-        if student_role.name[-3:] != '수강자':
+        if student_role.name[-3:] != '수강생':
             await ctx.respond('올바른 역할이 아닙니다!')
             
         else:
@@ -32,7 +32,7 @@ class Professor(Cog):
                     students        = get(ctx.guild.roles, name=f'{student_role.name}').members
                     student_list    = ''
                     
-                    student_list_embed = discord.Embed(title='수강자 리스트', description=f'{ctx.author.mention}님의 {subject} 과목 수강자 리스트입니다.', color=BotColor)
+                    student_list_embed = discord.Embed(title='수강생 리스트', description=f'{ctx.author.mention}님의 {subject} 과목 수강생 리스트입니다.', color=BotColor)
                     for student in students:
                         student_list += f'{student.mention} ({student.id})\n'
                     student_list_embed.add_field(name=f'{role.name}', value=student_list)
@@ -50,7 +50,7 @@ class Professor(Cog):
     async def refer_student(self, ctx, student: Option(discord.Member, '조회할 학생', required=True)):
         """수강생의 정보를 조회합니다."""
         
-        student_role    = map(lambda x: x.strip(' 수강자'), filter(lambda x: True if ' 수강자' in x else False, map(lambda x: x.name, student.roles)))
+        student_role    = map(lambda x: x.strip(' 수강생'), filter(lambda x: True if ' 수강생' in x else False, map(lambda x: x.name, student.roles)))
         professor_role  = map(lambda x: x.strip(' 교수님'), filter(lambda x: True if ' 교수님' in x else False, map(lambda x: x.name, ctx.author.roles)))
 
         if set(student_role) & set(professor_role) != set():
@@ -70,10 +70,10 @@ class Professor(Cog):
         """출석 체크를 진행합니다."""
         
         if ctx.channel.name == '🙋출석체크':
-            subject                 = ctx.channel.category.name
+            subject                 = ctx.channel.category.name[:-4]
             channel_member_list     = set(ctx.author.voice.channel.members)
             professor_list          = list(channel_member_list & set(get(ctx.guild.roles, name=f'{subject} 교수님').members))
-            student_list            = get(ctx.guild.roles, name=f'{subject} 수강자').members
+            student_list            = get(ctx.guild.roles, name=f'{subject} 수강생').members
             attended_member_list    = list(channel_member_list - set(professor_list))
             absent_member_list      = list(set(student_list) - set(attended_member_list))
             

@@ -13,7 +13,7 @@ class Student(Cog):
         self.bot = bot
         
     @slash_command(name='출결확인')
-    @has_role('수강자')
+    @has_role('수강생')
     async def confirm_attendance(self, ctx, subject: Option(str, '과목', choices=get_subject(), required=True)):
         """출결 상황을 보여줍니다."""
         
@@ -25,7 +25,7 @@ class Student(Cog):
             await ctx.respond(f'{subject} 과목의 출결 상황을 dm으로 보냈습니다.')
 
         else:
-            await ctx.respond(f'{student.mention}님은 {subject} 과목의 수강자가 아닙니다!')
+            await ctx.respond(f'{student.mention}님은 {subject} 과목의 수강생이 아닙니다!')
         
 def setup(bot):
     bot.add_cog(Student(bot))

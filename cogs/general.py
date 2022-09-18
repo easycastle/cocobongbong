@@ -40,8 +40,8 @@ class General(Cog):
         """수강신청을 도와줍니다."""
         
         if ctx.channel.name == '🃏수강신청':
-            student_role = get(ctx.guild.roles, name='수강자')
-            subject_role = get(ctx.guild.roles, name=f'{subject} 수강자')
+            student_role = get(ctx.guild.roles, name='수강생')
+            subject_role = get(ctx.guild.roles, name=f'{subject} 수강생')
             
             await ctx.author.add_roles(student_role, subject_role)
             await ctx.respond(f'{subject} 과목 강의를 신청하였습니다.')

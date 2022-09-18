@@ -63,21 +63,3 @@ student_overwrite = discord.PermissionOverwrite(
     # use_embedded_activities = True,       todo: 활동 사용하기 권한 확인
     use_voice_activation        = True, 
 )
-
-async def update_log_channel(guild, category):
-    member_list_channel = get(guild.channels, name=f'📋{category}')
-    position = member_list_channel.position
-    new_channel = await member_list_channel.clone()
-    await member_list_channel.delete()
-    await new_channel.edit(position=position)
-        
-    for subject in SUBJECT:
-            members = get(guild.roles, name=f'{subject} {category}').members
-            member_list = ''
-            for member in members:
-                member_list += f'{member.mention} ({member.id})\n'
-                
-            member_list_embed = discord.Embed(title=subject, description=member_list, color=BotColor)
-            member_list_embed.set_footer(text=BotVer)
-            
-            await new_channel.send(embed=member_list_embed)
