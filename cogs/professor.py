@@ -7,6 +7,7 @@ from discord.utils import get
 
 from etc.config import BotColor, BotVer
 from etc.db import *
+from etc.update import add_assistant
 
 from datetime import datetime
 import requests, json
@@ -73,35 +74,39 @@ class Professor(Cog):
         if role.name[-3:] != '조교님':
             await ctx.respond('올바른 역할이 아닙니다!')
         
+        elif not role.name[:-4] in map(lambda x: x.name[:-4], ctx.author.roles):
+            await ctx.respond('교수님이 담당하는 과목이 아닙니다!')
+            
+        elif role in assistant.roles:
+            await ctx.respond('이미 교수님이 납치하셨습니다!')
+        
         else:
-            if not role.name[:-4] in map(lambda x: x.name[:-4], ctx.author.roles):
-                await ctx.respond('교수님이 담당하는 과목이 아닙니다!')
-            else:
-                await ctx.defer()
-                
-                await assistant.add_roles(role)
-                
-                for page in get_db(database_id['subject']):
-                    if page['properties']['과목']['title'][0]['text']['content'] == role.name[:-4]:
-                        assistant_id = page['properties']['조교님']['rich_text'][0]['text']['content'] + f'{assistant.id}\n'
-                        page_id = page['id'].replace('-', '')
-                
-                update_data = {
-                    "properties": {
-                        "조교님": {
-                            "rich_text": [
-                                {
-                                    "text": {
-                                        "content": assistant_id
-                                    }
-                                }
-                            ]
-                        }
-                    }
-                }
-                res = requests.patch(f'https://api.notion.com/v1/pages/{page_id}', headers=headers, data=json.dumps(update_data))
-                
-                await ctx.respond(f'{assistant.mention}, 너 납치된 거야.')
+            await ctx.defer()
+            
+            await assistant.add_roles(role)
+            
+            for page in get_db(database_id['subject']):
+                if page['properties']['과목']['title'][0]['text']['content'] == role.name[:-4]:
+                    assistant_id = f'{assistant.id}\n' if page['properties']['조교님']['rich_text'] == [] else page['properties']['조교님']['rich_text'][0]['text']['content'] + f'{assistant.id}\n'
+                    page_id = page['id'].replace('-', '')
+            
+            add_assistant(page_id, assistant_id)
+            # update_data = {
+            #     "properties": {
+            #         "조교님": {
+            #             "rich_text": [
+            #                 {
+            #                     "text": {
+            #                         "content": assistant_id
+            #                     }
+            #                 }
+            #             ]
+            #         }
+            #     }
+            # }
+            # res = requests.patch(f'https://api.notion.com/v1/pages/{page_id}', headers=headers, data=json.dumps(update_data))
+            
+            await ctx.respond(f'{assistant.mention}, 너 납치된 거야.')
         
     @slash_command(name='출석체크')
     @has_role('교수님')

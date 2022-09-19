@@ -7,6 +7,7 @@ from discord.utils import get
 
 from etc.config import BotColor, BotVer
 from etc.db import *
+from etc.create import create_subject
 from etc.session_option import basic_permission, professor_overwrite, student_overwrite
 from etc.log_translation import translateLog
 
@@ -62,31 +63,32 @@ class Admin(Cog):
             professor_role = get(ctx.guild.roles, name='교수님')
             await professor.add_roles(professor_role, subject_professor_role)
             
-            new_subject_data = {
-                "parent": {"database_id": database_id['subject']},
-                "properties": {
-                    "과목": {
-                        "title": [
-                            {
-                                "text": {
-                                    "content": f'{new_subject} <{professor.name}>'
-                                }
-                            }
-                        ]
-                    }, 
-                    "교수님": {
-                        "rich_text": [
-                            {
-                                "text": {
-                                    "content": str(professor.id)
-                                }
-                            }
-                        ]
-                    }
-                }
-            }
-            res = requests.post('https://api.notion.com/v1/pages', headers=headers, data=json.dumps(new_subject_data))
-            print(res.text)
+            create_subject(f'{new_subject} <{professor.name}>', str(professor.id))
+            # new_subject_data = {
+            #     "parent": {"database_id": database_id['subject']},
+            #     "properties": {
+            #         "과목": {
+            #             "title": [
+            #                 {
+            #                     "text": {
+            #                         "content": f'{new_subject} <{professor.name}>'
+            #                     }
+            #                 }
+            #             ]
+            #         }, 
+            #         "교수님": {
+            #             "rich_text": [
+            #                 {
+            #                     "text": {
+            #                         "content": str(professor.id)
+            #                     }
+            #                 }
+            #             ]
+            #         }
+            #     }
+            # }
+            # res = requests.post('https://api.notion.com/v1/pages', headers=headers, data=json.dumps(new_subject_data))
+            # print(res.text)
             
             await ctx.respond(f'{new_subject} <{professor.name}> 과목이 개설되었습니다.')
         

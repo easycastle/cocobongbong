@@ -38,4 +38,4 @@ def create_subject(new_subject, professor_id, database_id=database_id, headers=h
     }
     data = json.dumps(new_subject_data)
 
-    requests.post(url=create_url, headers=headers, data=data)
+    requests.post("https://api.notion.com/v1/pages", headers=headers, data=json.dumps(new_subject_data))
