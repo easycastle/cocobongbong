@@ -11,7 +11,7 @@ headers = {
 def add_assistant(page_id, assistant_id, headers=headers):
     update_data = {
         "properties": {
-            "조교님": {
+            "도우미": {
                 "rich_text": [
                     {
                         "text": {

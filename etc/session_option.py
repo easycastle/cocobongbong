@@ -27,7 +27,7 @@ basic_permission = discord.Permissions(
     use_voice_activation        = True,
 )
 
-professor_overwrite = discord.PermissionOverwrite(
+head_student_overwrite = discord.PermissionOverwrite(
     view_channel                = True, 
     manage_channels             = True, 
     create_instant_invite       = True, 

@@ -2,7 +2,7 @@ import requests, json
 
 database_id = {
     'subject':                '5b51b804b0204c5badc31ebc69ec9bea', 
-    'professor':              '82fe41190f4041979003f40c2adc4797', 
+    'head_student':              '82fe41190f4041979003f40c2adc4797', 
     'student':                '304c611cfcac44a482b80a52badc6cec', 
 }
 

@@ -10,7 +10,7 @@ headers = {
     "Notion-Version": "2022-02-22"
 }
         
-def create_subject(new_subject, professor_id, database_id=database_id, headers=headers):
+def create_subject(new_subject, head_student_id, database_id=database_id, headers=headers):
     create_url = "https://api.notion.com/v1/pages"
 
     new_subject_data = {
@@ -25,11 +25,11 @@ def create_subject(new_subject, professor_id, database_id=database_id, headers=h
                     }
                 ]
             }, 
-            "교수님": {
+            "대표생": {
                 "rich_text": [
                     {
                         "text": {
-                            "content": professor_id
+                            "content": head_student_id
                         }
                     }
                 ]

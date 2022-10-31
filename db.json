@@ -22,7 +22,7 @@
       },
       "archived": false,
       "properties": {
-        "교수님": {
+        "대표생": {
           "id": "FO%3E%40",
           "type": "rich_text",
           "rich_text": [
@@ -42,8 +42,8 @@
             }
           ]
         },
-        "조교님": { "id": "%5DwR%40", "type": "rich_text", "rich_text": [] },
-        "수강자": {
+        "도우미": { "id": "%5DwR%40", "type": "rich_text", "rich_text": [] },
+        "수강생": {
           "id": "evGl",
           "type": "rich_text",
           "rich_text": [
@@ -110,7 +110,7 @@
       },
       "archived": false,
       "properties": {
-        "교수님": {
+        "대표생": {
           "id": "FO%3E%40",
           "type": "rich_text",
           "rich_text": [
@@ -130,8 +130,8 @@
             }
           ]
         },
-        "조교님": { "id": "%5DwR%40", "type": "rich_text", "rich_text": [] },
-        "수강자": {
+        "도우미": { "id": "%5DwR%40", "type": "rich_text", "rich_text": [] },
+        "수강생": {
           "id": "evGl",
           "type": "rich_text",
           "rich_text": [
@@ -198,7 +198,7 @@
       },
       "archived": false,
       "properties": {
-        "교수님": {
+        "대표생": {
           "id": "FO%3E%40",
           "type": "rich_text",
           "rich_text": [
@@ -218,8 +218,8 @@
             }
           ]
         },
-        "조교님": { "id": "%5DwR%40", "type": "rich_text", "rich_text": [] },
-        "수강자": {
+        "도우미": { "id": "%5DwR%40", "type": "rich_text", "rich_text": [] },
+        "수강생": {
           "id": "evGl",
           "type": "rich_text",
           "rich_text": [
@@ -286,7 +286,7 @@
       },
       "archived": false,
       "properties": {
-        "교수님": {
+        "대표생": {
           "id": "FO%3E%40",
           "type": "rich_text",
           "rich_text": [
@@ -306,8 +306,8 @@
             }
           ]
         },
-        "조교님": { "id": "%5DwR%40", "type": "rich_text", "rich_text": [] },
-        "수강자": {
+        "도우미": { "id": "%5DwR%40", "type": "rich_text", "rich_text": [] },
+        "수강생": {
           "id": "evGl",
           "type": "rich_text",
           "rich_text": [
@@ -374,7 +374,7 @@
       },
       "archived": false,
       "properties": {
-        "교수님": {
+        "대표생": {
           "id": "FO%3E%40",
           "type": "rich_text",
           "rich_text": [
@@ -394,8 +394,8 @@
             }
           ]
         },
-        "조교님": { "id": "%5DwR%40", "type": "rich_text", "rich_text": [] },
-        "수강자": { "id": "evGl", "type": "rich_text", "rich_text": [] },
+        "도우미": { "id": "%5DwR%40", "type": "rich_text", "rich_text": [] },
+        "수강생": { "id": "evGl", "type": "rich_text", "rich_text": [] },
         "과목": {
           "id": "title",
           "type": "title",
@@ -440,7 +440,7 @@
       },
       "archived": false,
       "properties": {
-        "교수님": {
+        "대표생": {
           "id": "FO%3E%40",
           "type": "rich_text",
           "rich_text": [
@@ -460,7 +460,7 @@
             }
           ]
         },
-        "조교님": {
+        "도우미": {
           "id": "%5DwR%40",
           "type": "rich_text",
           "rich_text": [
@@ -483,7 +483,7 @@
             }
           ]
         },
-        "수강자": {
+        "수강생": {
           "id": "evGl",
           "type": "rich_text",
           "rich_text": [
@@ -550,7 +550,7 @@
       },
       "archived": false,
       "properties": {
-        "교수님": {
+        "대표생": {
           "id": "FO%3E%40",
           "type": "rich_text",
           "rich_text": [
@@ -570,8 +570,8 @@
             }
           ]
         },
-        "조교님": { "id": "%5DwR%40", "type": "rich_text", "rich_text": [] },
-        "수강자": { "id": "evGl", "type": "rich_text", "rich_text": [] },
+        "도우미": { "id": "%5DwR%40", "type": "rich_text", "rich_text": [] },
+        "수강생": { "id": "evGl", "type": "rich_text", "rich_text": [] },
         "과목": {
           "id": "title",
           "type": "title",
@@ -616,7 +616,7 @@
       },
       "archived": false,
       "properties": {
-        "교수님": {
+        "대표생": {
           "id": "FO%3E%40",
           "type": "rich_text",
           "rich_text": [
@@ -636,7 +636,7 @@
             }
           ]
         },
-        "조교님": {
+        "도우미": {
           "id": "%5DwR%40",
           "type": "rich_text",
           "rich_text": [
@@ -656,7 +656,7 @@
             }
           ]
         },
-        "수강자": {
+        "수강생": {
           "id": "evGl",
           "type": "rich_text",
           "rich_text": [
@@ -723,7 +723,7 @@
       },
       "archived": false,
       "properties": {
-        "교수님": {
+        "대표생": {
           "id": "FO%3E%40",
           "type": "rich_text",
           "rich_text": [
@@ -743,8 +743,8 @@
             }
           ]
         },
-        "조교님": { "id": "%5DwR%40", "type": "rich_text", "rich_text": [] },
-        "수강자": { "id": "evGl", "type": "rich_text", "rich_text": [] },
+        "도우미": { "id": "%5DwR%40", "type": "rich_text", "rich_text": [] },
+        "수강생": { "id": "evGl", "type": "rich_text", "rich_text": [] },
         "과목": {
           "id": "title",
           "type": "title",

@@ -10,7 +10,7 @@ class Help(Cog):
         self.bot = bot
 
     @slash_command()
-    async def help(self, ctx, category: Option(str, '명령어 카테고리', choices=['어드민', '일반', '교수님', '수강생'], required=False, default=None)):
+    async def help(self, ctx, category: Option(str, '명령어 카테고리', choices=['어드민', '일반', '대표생', '수강생'], required=False, default=None)):
         """코코봉봉의 사용 방법을 알려줍니다."""
         
         if category == None:
@@ -18,14 +18,14 @@ class Help(Cog):
             help_embed.add_field(name=f'`/help`', value='명령어들의 종류를 크게 구분해서 보여줍니다.', inline=True)
             help_embed.add_field(name=f'`/help 어드민`', value='관리자만 사용 가능한 명령어 모음입니다.', inline=True)
             help_embed.add_field(name=f'`/help 일반`', value='일반적으로 사용 가능한 명령어 모음입니다.', inline=True)
-            help_embed.add_field(name=f'`/help 교수님`', value='교수님들이 사용 가능한 명령어 모음입니다.', inline=True)
+            help_embed.add_field(name=f'`/help 대표생`', value='대표생들이 사용 가능한 명령어 모음입니다.', inline=True)
             help_embed.add_field(name=f'`/help 수강생`', value='학생들이 사용 가능한 명령어입니다.', inline=True)
         
         elif category == '어드민':
             help_embed = discord.Embed(title='관리자 명령어', description='관리자만 사용 가능한 명령어 모음입니다.', color=BotColor)
             help_embed.add_field(name=f'`/개설 <강의실 이름> <역할 색상>`', value='원하는 주제의 강의실을 개설합니다.', inline=True)
             help_embed.add_field(name=f'`/교수임용 <임용할 스터디원> <과목>`', value='해당 스터디원을 교수로 임용합니다.', inline=True)
-            help_embed.add_field(name=f'`/교수파면 <파면시킬 교수> <과목>`', value='해당 교수님을 파면합니다.', inline=True)
+            help_embed.add_field(name=f'`/교수파면 <파면시킬 교수> <과목>`', value='해당 대표생을 파면합니다.', inline=True)
             help_embed.add_field(name=f'`/kick <추방할 유저>`', value='문제가 있는 사람들을 추방합니다.', inline=True)
             help_embed.add_field(name=f'`/ban <차단할 유저>`', value='마음에 들지 않은 사람들을 차단합니다.', inline=True)
             help_embed.add_field(name=f'`/chat_mute <뮤트할 유저>`', value='채팅이 시끄러운 사람들을 조용히 만듭니다.', inline=True)
@@ -39,12 +39,11 @@ class Help(Cog):
         elif category == '일반':
             help_embed = discord.Embed(title='도움말', description='모든 스터디원이 사용 가능한 명령어 모음입니다.', color=BotColor)
             help_embed.add_field(name='`/학번`', value='자신의 학번(디스코드 id)를 알려줍니다.', inline=True)
-            help_embed.add_field(name='`/교수소개 <과목>`', value='과목별 교수님의 한 줄 소개를 보여줍니다.', inline=True)
             help_embed.add_field(name='`/수강신청 <과목>`', value='수강신청을 도와줍니다.', inline=True)
         
-        elif category == '교수님':
-            help_embed = discord.Embed(title='도움말', description='교수님들이 사용 가능한 명령어 모음입니다.', color=BotColor)
-            help_embed.add_field(name='`/수강생명단 <과목>`', value='교수님에게 배울 수강생 명단을 보여줍니다.', inline=True)
+        elif category == '대표생':
+            help_embed = discord.Embed(title='도움말', description='대표생들이 사용 가능한 명령어 모음입니다.', color=BotColor)
+            help_embed.add_field(name='`/수강생명단 <과목>`', value='대표생에게 배울 수강생 명단을 보여줍니다.', inline=True)
             help_embed.add_field(name='`/조회 <조회할 학생>`', value='수강생의 정보를 조회합니다.', inline=True)
             help_embed.add_field(name='`/출석체크`', value='출석 체크를 진행합니다.', inline=True)
 
