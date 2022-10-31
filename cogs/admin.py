@@ -98,31 +98,30 @@ class Admin(Cog):
         """해당 강의를 폐강합니다."""
         
         if not '교수님' in session.name:
-            ctx.respoond('알맞은 역할이 아닙니다!')
+            ctx.respond('알맞은 역할이 아닙니다!')
+        elif not session.name in map(lambda x: x.name, professor.roles):
+            await ctx.respond('폐강할 강의의 담당 교수님이 아닙니다!')
         else:
-            if not session.name in map(lambda x: x.name, professor.roles):
-                await ctx.respond('폐강할 강의의 담당 교수님이 아닙니다!')
-            else:
-                await ctx.defer()
+            await ctx.defer()
+            
+            for name in ['교수님', '조교님', '수강생']:
+                role = get(ctx.guild.roles, name=f'{session.name[:-3]}{name}')
+                await role.delete()
                 
-                for name in ['교수님', '조교님', '수강생']:
-                    role = get(ctx.guild.roles, name=f'{session.name[:-3]}{name}')
-                    await role.delete()
-                    
-                if len(list(filter(lambda x: x.name[-3:] == '교수님', professor.roles))) == 1:
-                    await professor.remove_roles(get(ctx.guild.roles, name='교수님'))
+            if len(list(filter(lambda x: x.name[-3:] == '교수님', professor.roles))) == 1:
+                await professor.remove_roles(get(ctx.guild.roles, name='교수님'))
+            
+            category = get(ctx.guild.categories, name=f'{session.name[:-4]}')
+            for channel in category.channels:
+                await channel.delete()
+            await category.delete()
+            
+            for page in get_db(database_id['subject']):
+                if page['properties']['과목']['title'][0]['text']['content'] == session.name[:-4]:
+                    block_id = page['id']
+            requests.delete(f'https://api.notion.com/v1/blocks/{block_id}', headers=headers)
                 
-                category = get(ctx.guild.categories, name=f'{session.name[:-4]}')
-                for channel in category.channels:
-                    await channel.delete()
-                await category.delete()
-                
-                for page in get_db(database_id['subject']):
-                    if page['properties']['과목']['title'][0]['text']['content'] == session.name[:-4]:
-                        block_id = page['id']
-                requests.delete(f'https://api.notion.com/v1/blocks/{block_id}', headers=headers)
-                    
-                await ctx.respond('해당 강의를 폐강하였습니다.')
+            await ctx.respond('해당 강의를 폐강하였습니다.')
 
     @slash_command()
     @has_permissions(administrator=True)
