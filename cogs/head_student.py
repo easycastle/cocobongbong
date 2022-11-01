@@ -18,8 +18,8 @@ class head_student(Cog):
 
     @slash_command(name='수강생명단')
     @has_role('대표생')
-    async def check_students(self, ctx, student_role: Option(discord.Role, '조회할 학생', required=True)):    
-        """대표생에게 배울 수강생 명단을 보여줍니다."""
+    async def check_students(self, ctx, student_role: Option(discord.Role, '조회할 수강생 역할', required=True)):    
+        """스터디의 수강생 명단을 보여줍니다."""
         
         if student_role.name[-3:] != '수강생':
             await ctx.respond('올바른 역할이 아닙니다!')
@@ -69,7 +69,7 @@ class head_student(Cog):
     @slash_command(name='도우미임용')
     @has_role('대표생')
     async def kidnap(self, ctx, assistant: Option(discord.Member, '납치할 도우미', required=True), role: Option(discord.Role, '도우미 역할', required=True)):
-        """도우미를 납치합니다."""
+        """스터디를 도와줄 도우미를 납치합니다."""
         
         if role.name[-3:] != '도우미':
             await ctx.respond('올바른 역할이 아닙니다!')

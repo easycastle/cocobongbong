@@ -23,7 +23,7 @@ class Admin(Cog):
     @slash_command(name='개설', guild_ids=[1012586500006875139])
     @has_role('관리자')
     async def open_session(self, ctx, new_subject: Option(str, '스터디명', required=True), head_student: Option(discord.Member, '스터디 대표생', required=True), color: Option(str, '역할 색상', required=True)):
-        """원하는 주제의 스터디실을 개설합니다."""
+        """원하는 주제의 스터디를 개설합니다."""
         
         if ' ' in new_subject:
             await ctx.respond('스터디명에 공백은 넣을 수 없습니다!')
@@ -94,7 +94,7 @@ class Admin(Cog):
         
     @slash_command(name='폐강')
     @has_role('관리자')
-    async def close_session(self, ctx, session: Option(discord.Role, '폐강할 스터디 역할', required=True), head_student: Option(discord.Member, '담당 교수 이름', required=True)):
+    async def close_session(self, ctx, session: Option(discord.Role, '스터디 대표생 역할', required=True), head_student: Option(discord.Member, '대표생 이름', required=True)):
         """해당 스터디를 폐강합니다."""
         
         if not '대표생' in session.name:
@@ -358,14 +358,6 @@ class Admin(Cog):
             view.add_item(topRightBtn)
 
             page = await ctx.respond(embed=logEmbed, view=view)
-            
-    @slash_command(name='복구', guild_ids=[1012586500006875139])
-    @has_role('관리자')
-    async def recover(self, ctx):
-        """손실된 DB를 복구합니다."""
-        
-        await ctx.guild.create_role(name='테스트', color=int(f'0x{color}', 16))
-        await ctx.respond(f'test')
         
 def setup(bot):
     bot.add_cog(Admin(bot))
