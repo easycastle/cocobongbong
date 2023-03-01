@@ -37,5 +37,5 @@ async def on_ready():
     await bot.change_presence(status=discord.Status.online, activity=discord.Game(f'/help 치면 사용법 설명'))
     
 
-token = 'MTAxMzEzMjIwNTcwNDM0NzcwOA.GP2V-Q.ZVUkqk5HpfwejhHRdMXHAGPIVDwkiKsGbn_jHc'
+token = 'MTAxMzEzMjIwNTcwNDM0NzcwOA.GSPVdQ.Rh_Gw0G9seTTnUd30r-R2fZUsL5h1r0lccuFU4'
 bot.run(token)

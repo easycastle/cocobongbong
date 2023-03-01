@@ -61,8 +61,8 @@ class Admin(Cog):
             president_role = get(ctx.guild.roles, name='대표생')
             await president.add_roles(president_role, session_president_role)
 
-            add_president_in_db(president.id, president.name, session)
-            
+            add_session_in_db(session, president.name, president.id)
+
             await ctx.respond(f'{session} <{president.name}> 과목이 개설되었습니다.')
         
     @slash_command(name='폐강')
@@ -88,7 +88,7 @@ class Admin(Cog):
                 await channel.delete()
             await category.delete()
 
-            delete_president_from_db(president.id, session.name.split()[0])
+            delete_session_from_db(session.name.split()[0], president.id)
             
             await ctx.respond('해당 스터디를 폐강하였습니다.')
 
