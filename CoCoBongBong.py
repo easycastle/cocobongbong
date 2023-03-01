@@ -6,6 +6,7 @@ from discord.commands import slash_command, Option
 from discord.ui import Button, Select, View
 from discord.utils import get
 
+import sqlite3
 from etc.config import *
 from etc.session_option import *
 
@@ -19,6 +20,8 @@ intents.typing = True
 bot = discord.Bot(intents=intents)
 
 if __name__ == '__main__':
+    sqlite3.connect('etc/cocobongbong.db')
+
     for extension in EXTENSIONS:
         try:
             bot.load_extension(extension)
