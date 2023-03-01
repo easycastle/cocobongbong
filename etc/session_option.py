@@ -2,8 +2,6 @@ import discord
 import asyncio
 from discord.utils import get
 
-from etc.config import BotColor, BotVer
-
 basic_permission = discord.Permissions(
     view_channel                = True, 
     create_instant_invite       = True, 
@@ -27,7 +25,7 @@ basic_permission = discord.Permissions(
     use_voice_activation        = True,
 )
 
-head_student_overwrite = discord.PermissionOverwrite(
+president_overwrite = discord.PermissionOverwrite(
     view_channel                = True, 
     manage_channels             = True, 
     create_instant_invite       = True, 

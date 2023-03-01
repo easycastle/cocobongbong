@@ -1,33 +1,52 @@
-import requests, json
+import sqlite3
 
-database_id = {
-    'subject':                '5b51b804b0204c5badc31ebc69ec9bea', 
-    'head_student':              '82fe41190f4041979003f40c2adc4797', 
-    'student':                '304c611cfcac44a482b80a52badc6cec', 
-}
+from datetime import datetime
 
-token = 'secret_KqzDNQ5Ieq9mbswQCvhQyxYj9h8g7OQVctziq5im1JU'
+def create_table():
+    conn = sqlite3.connect('etc/cocobongbong.db')
+    cur = conn.cursor()
+    
+    cur.execute('CREATE TABLE IF NOT EXISTS president (id INTEGER, name TEXT, session TEXT)')
+    cur.execute('CREATE TABLE IF NOT EXISTS student (id INTEGER, name TEXT, session TEXT)')
+    cur.execute('CREATE TABLE IF NOT EXISTS session (name TEXT, created_at DATETIME)')
 
-headers = {
-    'Authorization': 'Bearer ' + token, 
-    'Accept': 'application/json',
-    'Notion-Version': '2022-02-22'
-}
+    conn.commit()
+    conn.close()
 
-def get_db(database_id, headers=headers):
-    read_url = f'https://api.notion.com/v1/databases/{database_id}/query'
-    
-    res = requests.post(read_url, headers=headers)
-    data = res.json()['results']
-    
-    return data
+def connect_table(table_name: str):
+    conn = sqlite3.connect('etc/cocobongbong.db')
+    cur = conn.cursor()
 
-def get_subject(database_id=database_id['subject']):
-    data = get_db(database_id)
-    
-    subject = []
-    
-    for info in list(map(lambda x: x['properties'], data)):
-        subject.append(info['과목']['title'][0]['text']['content'])
-    
-    return subject
+    return conn, cur
+
+def create_session_in_db(session_name: str, created_at: datetime):
+    conn, cur = connect_table('session')
+
+    cur.execute('INSERT INTO session VALUES (?, ?)', (session_name, created_at))
+
+    conn.commit()
+    conn.close()
+
+def delete_session_from_db(session_name: str):
+    conn, cur = connect_table('session')
+
+    cur.execute('DELETE FROM session WHERE name = ?', (session_name,))
+
+    conn.commit()
+    conn.close()
+
+def add_president_in_db(president_id: int, president_name: str, session_name: str):
+    conn, cur = connect_table('president')
+
+    cur.execute('INSERT INTO president VALUES (?, ?, ?)', (president_id, president_name, session_name))
+
+    conn.commit()
+    conn.close()
+
+def add_student_in_db(student_id: int, student_name: str, session_name: str):
+    conn, cur = connect_table('student')
+
+    cur.execute('INSERT INTO student VALUES (?, ?, ?)', (student_id, student_name, session_name))
+
+    conn.commit()
+    conn.close()
