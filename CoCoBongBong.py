@@ -6,6 +6,7 @@ from discord.commands import slash_command, Option
 from discord.ui import Button, Select, View
 from discord.utils import get
 
+from etc.db import *
 from etc.config import *
 from etc.session_option import *
 
@@ -19,6 +20,8 @@ intents.typing = True
 bot = discord.Bot(intents=intents)
 
 if __name__ == '__main__':
+    create_table()
+
     for extension in EXTENSIONS:
         try:
             bot.load_extension(extension)
@@ -33,5 +36,6 @@ async def on_ready():
     
     await bot.change_presence(status=discord.Status.online, activity=discord.Game(f'/help 치면 사용법 설명'))
     
-access_token = os.environ['BOT_TOKEN']
-bot.run(access_token)
+
+token = 'MTAxMzEzMjIwNTcwNDM0NzcwOA.GP2V-Q.ZVUkqk5HpfwejhHRdMXHAGPIVDwkiKsGbn_jHc'
+bot.run(token)
